@@ -5,8 +5,8 @@ const mysql = require('mysql');
 const path = require('path');
 const app = express();
 
- const {getHomePage} = require('./routes/index');
- const {addPlayerPage, addPlayer, deletePlayer, editPlayer, editPlayerPage} = require('./routes/player');
+ //const {getHomePage} = require('./routes/index');
+ //const {addPlayerPage, addPlayer, deletePlayer, editPlayer, editPlayerPage} = require('./routes/player');
 const port = 3000;
 
 // create connection to database
@@ -37,13 +37,17 @@ app.use(express.static(path.join(__dirname, 'public'))); // configure express to
 app.use(fileUpload()); // configure fileupload
 
 // routes for the app
+app.set("views", "./views");
+app.set("view engine", "ejs");
+app.get("/", (req, res) => {
+	res.render("index");
+});
 
-app.get('/', getHomePage);
-app.get('/add', addPlayerPage);
-app.get('/edit/:id', editPlayerPage);
-app.get('/delete/:id', deletePlayer);
-app.post('/add', addPlayer);
-app.post('/edit/:id', editPlayer);
+// app.get('/add', addPlayerPage);
+// app.get('/edit/:id', editPlayerPage);
+// app.get('/delete/:id', deletePlayer);
+// app.post('/add', addPlayer);
+// app.post('/edit/:id', editPlayer);
 
 
 // set the app to listen on the port
