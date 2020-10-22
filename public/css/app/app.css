@@ -78,7 +78,7 @@ body.login .lock-container .panel .forgot-password {
 }
 body.survey {
   position: relative;
-  background: url('http://learning.frontendmatter.com/html/css/images/photodune-6745585-modern-creative-workspace-m.jpg') top left no-repeat;
+  background: url('http://learning.frontendmatter.com/html/public/css/images/photodune-6745585-modern-creative-workspace-m.jpg') top left no-repeat;
   background-attachment: fixed;
   background-size: cover;
 }
@@ -1703,7 +1703,7 @@ input[type=radio]:focus + label::before {
  *
  * 1. Overwrite .select2-container's original display:inline-block
  *    with Bootstrap 3's default for .form-control, display:block;
- *    courtesy of @juristr (@see https://github.com/fk/select2-bootstrap-css/pull/1)
+ *    courtesy of @juristr (@see https://github.com/fk/select2-bootstrap-public/css/pull/1)
  */
 .select2-container.form-control {
   background: transparent;
@@ -1758,7 +1758,7 @@ input[type=radio]:focus + label::before {
 }
 /**
  * Address Bootstrap 3 control sizing classes
- * @see http://getbootstrap.com/css/#forms-control-sizes
+ * @see http://getbootstrap.com/public/css/#forms-control-sizes
  */
 .select2-container.input-sm .select2-choice,
 .input-group-sm .select2-container .select2-choice {

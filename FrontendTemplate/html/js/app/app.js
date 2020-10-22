@@ -3175,7 +3175,7 @@ var asyncLoader = require('./_async');
         var skin = $.cookie("skin"),
             file = $.cookie("skin-file");
         if (typeof skin != 'undefined') {
-            asyncLoader([ 'css/' + file + '.min.css' ], function () {
+            asyncLoader([ 'public/css/' + file + '.min.css' ], function () {
                 $('[data-skin]').removeProp('disabled').parent().removeClass('loading');
             });
         }

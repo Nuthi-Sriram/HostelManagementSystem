@@ -5729,7 +5729,7 @@ jQuery.swap = function( elem, options, callback, args ) {
 
 var
 	// Swappable if display is none or starts with table except "table", "table-cell", or "table-caption"
-	// See here for display values: https://developer.mozilla.org/en-US/docs/CSS/display
+	// See here for display values: https://developer.mozilla.org/en-US/docs/public/css/display
 	rdisplayswap = /^(none|table(?!-c[ea]).+)/,
 	rnumsplit = new RegExp( "^(" + pnum + ")(.*)$", "i" ),
 	rrelNum = new RegExp( "^([+-])=(" + pnum + ")", "i" ),
@@ -30684,8 +30684,8 @@ window.Modernizr = (function( window, document, undefined ) {
         /**
          * For CSS Gradients syntax, please see:
          * webkit.org/blog/175/introducing-css-gradients/
-         * developer.mozilla.org/en/CSS/-moz-linear-gradient
-         * developer.mozilla.org/en/CSS/-moz-radial-gradient
+         * developer.mozilla.org/en/public/css/-moz-linear-gradient
+         * developer.mozilla.org/en/public/css/-moz-radial-gradient
          * dev.w3.org/csswg/css3-images/#gradients-
          */
 

@@ -349,7 +349,7 @@ td,
 th {
   padding: 0;
 }
-/*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
+/*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/public/css/main.css */
 @media print {
   *,
   *:before,
@@ -9706,7 +9706,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 }
 
 .minicolors-no-data-uris .minicolors-sprite {
-    background-image: url(http://learning.frontendmatter.com/html/css/vendor/jquery.minicolors.png);
+    background-image: url(http://learning.frontendmatter.com/html/public/css/vendor/jquery.minicolors.png);
 }
 
 .minicolors-swatch {
@@ -12531,7 +12531,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
   top: 50%;
   margin-left: -40px;
   margin-top: -40px;
-  background: url("http://learning.frontendmatter.com/html/css/vendor/owl.video.play.png") no-repeat;
+  background: url("http://learning.frontendmatter.com/html/public/css/vendor/owl.video.play.png") no-repeat;
   cursor: pointer;
   z-index: 1;
   -webkit-backface-visibility: hidden;
@@ -14960,7 +14960,7 @@ Version: 3.5.2 Timestamp: Sat Nov  1 14:43:36 EDT 2014
   /*
     Force border-box so that % widths fit the parent
     container without overlap because of margin/padding.
-    More Info : http://www.quirksmode.org/css/box.html
+    More Info : http://www.quirksmode.org/public/css/box.html
   */
   -webkit-box-sizing: border-box; /* webkit */
      -moz-box-sizing: border-box; /* firefox */
@@ -16054,7 +16054,7 @@ td,
 th {
   padding: 0;
 }
-/*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
+/*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/public/css/main.css */
 @media print {
   *,
   *:before,
@@ -25411,7 +25411,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 }
 
 .minicolors-no-data-uris .minicolors-sprite {
-    background-image: url(http://learning.frontendmatter.com/html/css/vendor/jquery.minicolors.png);
+    background-image: url(http://learning.frontendmatter.com/html/public/css/vendor/jquery.minicolors.png);
 }
 
 .minicolors-swatch {
@@ -28236,7 +28236,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
   top: 50%;
   margin-left: -40px;
   margin-top: -40px;
-  background: url("http://learning.frontendmatter.com/html/css/vendor/owl.video.play.png") no-repeat;
+  background: url("http://learning.frontendmatter.com/html/public/css/vendor/owl.video.play.png") no-repeat;
   cursor: pointer;
   z-index: 1;
   -webkit-backface-visibility: hidden;
@@ -30665,7 +30665,7 @@ Version: 3.5.2 Timestamp: Sat Nov  1 14:43:36 EDT 2014
   /*
     Force border-box so that % widths fit the parent
     container without overlap because of margin/padding.
-    More Info : http://www.quirksmode.org/css/box.html
+    More Info : http://www.quirksmode.org/public/css/box.html
   */
   -webkit-box-sizing: border-box; /* webkit */
      -moz-box-sizing: border-box; /* firefox */
