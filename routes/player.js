@@ -3,7 +3,7 @@ const fs = require('fs');
 module.exports = {
     addPlayerPage: (req, res) => {
         res.render('add-player.ejs', {
-            title: ""//Welcome to Socka | Add a new player
+            title: 'Welcome to Socka | Add a new player'
             ,message: ''
         });
     },
@@ -33,7 +33,7 @@ module.exports = {
                 message = 'Username already exists';
                 res.render('add-player.ejs', {
                     message,
-                    title: ""//Welcome to Socka | Add a new player
+                    title: 'Welcome to Socka | Add a new player'
                 });
             } else {
                 // check the filetype before uploading it
@@ -57,7 +57,7 @@ module.exports = {
                     message = "Invalid File format. Only 'gif', 'jpeg' and 'png' images are allowed.";
                     res.render('add-player.ejs', {
                         message,
-                        title: ""//Welcome to Socka | Add a new player
+                        title: 'Welcome to Socka | Add a new player'
                     });
                 }
             }
