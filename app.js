@@ -42,6 +42,15 @@ app.set("view engine", "ejs");
 app.get("/", (req, res) => {
 	res.render("index");
 });
+app.get("/pricing", (req, res) => {
+	res.render("pricing");
+});
+app.get("/survey", (req, res) => {
+	res.render("survey");
+});
+app.get("/website-forum", (req, res) => {
+	res.render("website-forum");
+});
 
 // app.get('/add', addPlayerPage);
 // app.get('/edit/:id', editPlayerPage);
