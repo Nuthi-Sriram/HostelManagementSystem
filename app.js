@@ -66,6 +66,9 @@ app.get("/website-student-dashboard",(req,res)=>{
 app.get("/website-student-profile",(req,res)=>{
     res.render("website-student-profile");
 });
+app.get("/website-warden-dashboard",(req,res)=>{
+    res.render("website-warden-dashboard");
+});
 // app.get('/add', addPlayerPage);
 // app.get('/edit/:id', editPlayerPage);
 // app.get('/delete/:id', deletePlayer);
