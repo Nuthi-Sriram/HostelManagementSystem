@@ -60,6 +60,9 @@ app.get("/website-contact", (req, res) => {
 app.get("/login", (req, res) => {
 	res.render("login");
 });
+app.get("/website-student-dashboard",(req,res)=>{
+    res.render("website-student-dashboard");
+});
 // app.get('/add', addPlayerPage);
 // app.get('/edit/:id', editPlayerPage);
 // app.get('/delete/:id', deletePlayer);
