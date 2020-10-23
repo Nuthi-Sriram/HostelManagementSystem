@@ -3,29 +3,37 @@ const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const path = require('path');
+const cors = require('cors');
+const dotenv = require('dotenv');
+dotenv.config();
 const app = express();
+const dbService = require('./dbService');
 
  //const {getHomePage} = require('./routes/index');
  //const {addPlayerPage, addPlayer, deletePlayer, editPlayer, editPlayerPage} = require('./routes/player');
 const port = 3000;
+app.use(cors());
+app.use(express.json());
 
 // create connection to database
 // the mysql.createConnection function takes in a configuration object which contains host, user, password and the database name.
-const db = mysql.createConnection ({
-    host: 'localhost',
-    user: 'root',
-    password: 'Password123@',
-    database: 'socka'
-});
+
+// const db = mysql.createConnection ({
+//     host: 'localhost',
+//     user: 'root',
+//     password: 'Password123@',
+//     database: 'socka'
+// });
+
 
 // connect to database
-db.connect((err) => {
-    if (err) {
-        throw err;
-    }
-    console.log('Connected to database');
-});
-global.db = db;
+// db.connect((err) => {
+//     if (err) {
+//         throw err;
+//     }
+//     console.log('Connected to database');
+// });
+// global.db = db;
 
 // configure middleware
 app.set('port', process.env.port || port); // set express to use this port
@@ -39,8 +47,69 @@ app.use(fileUpload()); // configure fileupload
 // routes for the app
 app.set("views", "./views");
 app.set("view engine", "ejs");
+
+// create
+app.post('/insert', (request, response) => {
+    const { name } = request.body;
+    const db = dbService.getDbServiceInstance();
+    
+    const result = db.insertNewName(name);
+
+    result
+    .then(data => response.json({ data: data}))
+    .catch(err => console.log(err));
+});
+
+// read
+app.get('/getAll', (request, response) => {
+    const db = dbService.getDbServiceInstance();
+
+    const result = db.getAllData();
+    
+    result
+    .then(data => response.json({data : data}))
+    .catch(err => console.log(err));
+})
+
+// update
+app.patch('/update', (request, response) => {
+    const { id, name } = request.body;
+    const db = dbService.getDbServiceInstance();
+
+    const result = db.updateNameById(id, name);
+    
+    result
+    .then(data => response.json({success : data}))
+    .catch(err => console.log(err));
+});
+
+// delete
+app.delete('/delete/:id', (request, response) => {
+    const { id } = request.params;
+    const db = dbService.getDbServiceInstance();
+
+    const result = db.deleteRowById(id);
+    
+    result
+    .then(data => response.json({success : data}))
+    .catch(err => console.log(err));
+});
+
+app.get('/search/:name', (request, response) => {
+    const { name } = request.params;
+    const db = dbService.getDbServiceInstance();
+
+    const result = db.searchByName(name);
+    
+    result
+    .then(data => response.json({data : data}))
+    .catch(err => console.log(err));
+})
 app.get("/", (req, res) => {
 	res.render("index");
+});
+app.get("/add-student", (req, res) => {
+	res.render("add-student");
 });
 app.get("/pricing", (req, res) => {
 	res.render("pricing");
