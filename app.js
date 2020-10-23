@@ -51,7 +51,15 @@ app.get("/survey", (req, res) => {
 app.get("/website-forum", (req, res) => {
 	res.render("website-forum");
 });
-
+app.get("/website-forum-thread", (req, res) => {
+	res.render("website-forum-thread");
+});
+app.get("/website-contact", (req, res) => {
+	res.render("website-contact");
+});
+app.get("/login", (req, res) => {
+	res.render("login");
+});
 // app.get('/add', addPlayerPage);
 // app.get('/edit/:id', editPlayerPage);
 // app.get('/delete/:id', deletePlayer);
