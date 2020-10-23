@@ -15259,7 +15259,7 @@ if (typeof jQuery === 'undefined') {
  * or Isotope Commercial License for commercial use
  *
  * http://isotope.metafizzy.co
- * Copyright 2015 Metafizzy
+ * Copyright 2020 Metafizzy
  */
 
 /**
@@ -18841,7 +18841,7 @@ return Vertical;
  * or Isotope Commercial License for commercial use
  *
  * http://isotope.metafizzy.co
- * Copyright 2015 Metafizzy
+ * Copyright 2020 Metafizzy
  */
 
 ( function( window, factory ) {
@@ -20071,7 +20071,7 @@ return Item;
  * or Flickity Commercial License for commercial use
  *
  * http://packery.metafizzy.co
- * Copyright 2015 Metafizzy
+ * Copyright 2020 Metafizzy
  */
 
 ( function( window, factory ) {
