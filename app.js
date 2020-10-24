@@ -9,8 +9,8 @@ dotenv.config();
 const app = express();
 const dbService = require('./dbService');
 
- //const {getHomePage} = require('./routes/index');
- //const {addPlayerPage, addPlayer, deletePlayer, editPlayer, editPlayerPage} = require('./routes/player');
+//const {getHomePage} = require('./routes/index');
+//const {addPlayerPage, addPlayer, deletePlayer, editPlayer, editPlayerPage} = require('./routes/player');
 const port = 3000;
 app.use(cors());
 app.use(express.json());
@@ -49,22 +49,23 @@ app.set("views", "./views");
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
-	res.render("index");
+    res.render("index");
 });
 
 app.get("/add-student", (req, res) => {
     res.render("add-student");
+});
 
-    // create
+// create
 app.post('/insert', (request, response) => {
     const { name } = request.body;
     const db = dbService.getDbServiceInstance();
-    
+
     const result = db.insertNewName(name);
 
     result
-    .then(data => response.json({ data: data}))
-    .catch(err => console.log(err));
+        .then(data => response.json({ data: data }))
+        .catch(err => console.log(err));
 });
 
 // read
@@ -72,10 +73,10 @@ app.get('/getAll', (request, response) => {
     const db = dbService.getDbServiceInstance();
 
     const result = db.getAllData();
-    
+
     result
-    .then(data => response.json({data : data}))
-    .catch(err => console.log(err));
+        .then(data => response.json({ data: data }))
+        .catch(err => console.log(err));
 })
 
 // update
@@ -84,10 +85,10 @@ app.patch('/update', (request, response) => {
     const db = dbService.getDbServiceInstance();
 
     const result = db.updateNameById(id, name);
-    
+
     result
-    .then(data => response.json({success : data}))
-    .catch(err => console.log(err));
+        .then(data => response.json({ success: data }))
+        .catch(err => console.log(err));
 });
 
 // delete
@@ -96,10 +97,10 @@ app.delete('/delete/:id', (request, response) => {
     const db = dbService.getDbServiceInstance();
 
     const result = db.deleteRowById(id);
-    
+
     result
-    .then(data => response.json({success : data}))
-    .catch(err => console.log(err));
+        .then(data => response.json({ success: data }))
+        .catch(err => console.log(err));
 });
 
 app.get('/search/:name', (request, response) => {
@@ -107,40 +108,38 @@ app.get('/search/:name', (request, response) => {
     const db = dbService.getDbServiceInstance();
 
     const result = db.searchByName(name);
-    
+
     result
-    .then(data => response.json({data : data}))
-    .catch(err => console.log(err));
-})
-
-
+        .then(data => response.json({ data: data }))
+        .catch(err => console.log(err));
 });
+
 
 app.get("/pricing", (req, res) => {
-	res.render("pricing");
+    res.render("pricing");
 });
 app.get("/survey", (req, res) => {
-	res.render("survey");
+    res.render("survey");
 });
 app.get("/website-forum", (req, res) => {
-	res.render("website-forum");
+    res.render("website-forum");
 });
 app.get("/website-forum-thread", (req, res) => {
-	res.render("website-forum-thread");
+    res.render("website-forum-thread");
 });
 app.get("/website-contact", (req, res) => {
-	res.render("website-contact");
+    res.render("website-contact");
 });
 app.get("/login", (req, res) => {
-	res.render("login");
+    res.render("login");
 });
-app.get("/website-student-dashboard",(req,res)=>{
+app.get("/website-student-dashboard", (req, res) => {
     res.render("website-student-dashboard");
 });
-app.get("/website-student-profile",(req,res)=>{
+app.get("/website-student-profile", (req, res) => {
     res.render("website-student-profile");
 });
-app.get("/website-warden-dashboard",(req,res)=>{
+app.get("/website-warden-dashboard", (req, res) => {
     res.render("website-warden-dashboard");
 });
 // app.get('/add', addPlayerPage);
