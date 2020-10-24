@@ -37,7 +37,7 @@ app.use(express.json());
 
 // configure middleware
 app.set('port', process.env.port || port); // set express to use this port
-app.set('views', __dirname + '/views'); // set express to look in this folder to render our view
+// app.set('views', __dirname + '/views'); // set express to look in this folder to render our view
 app.set('view engine', 'ejs'); // configure template engine
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json()); // parse form data client
@@ -48,7 +48,14 @@ app.use(fileUpload()); // configure fileupload
 app.set("views", "./views");
 app.set("view engine", "ejs");
 
-// create
+app.get("/", (req, res) => {
+	res.render("index");
+});
+
+app.get("/add-student", (req, res) => {
+    res.render("add-student");
+
+    // create
 app.post('/insert', (request, response) => {
     const { name } = request.body;
     const db = dbService.getDbServiceInstance();
@@ -105,12 +112,10 @@ app.get('/search/:name', (request, response) => {
     .then(data => response.json({data : data}))
     .catch(err => console.log(err));
 })
-app.get("/", (req, res) => {
-	res.render("index");
+
+
 });
-app.get("/add-student", (req, res) => {
-	res.render("add-student");
-});
+
 app.get("/pricing", (req, res) => {
 	res.render("pricing");
 });
