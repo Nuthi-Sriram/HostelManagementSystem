@@ -5,9 +5,10 @@ const mysql = require('mysql');
 const path = require('path');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const hbs = require('hbs');
 dotenv.config();
 const app = express();
-const dbService = require('./dbService');
+//const dbService = require('./dbService');
 
 //const {getHomePage} = require('./routes/index');
 //const {addPlayerPage, addPlayer, deletePlayer, editPlayer, editPlayerPage} = require('./routes/player');
@@ -18,27 +19,28 @@ app.use(express.json());
 // create connection to database
 // the mysql.createConnection function takes in a configuration object which contains host, user, password and the database name.
 
-// const db = mysql.createConnection ({
-//     host: 'localhost',
-//     user: 'root',
-//     password: 'Password123@',
-//     database: 'socka'
-// });
+const db = mysql.createConnection ({
+    host: 'localhost',
+    user: 'root',
+    password: 'Password123@',
+    database: 'socka'
+});
 
 
-// connect to database
-// db.connect((err) => {
-//     if (err) {
-//         throw err;
-//     }
-//     console.log('Connected to database');
-// });
-// global.db = db;
+//connect to database
+db.connect((err) => {
+    if (err) {
+        throw err;
+    }
+    console.log('Connected to database');
+});
+global.db = db;
 
 // configure middleware
 app.set('port', process.env.port || port); // set express to use this port
 // app.set('views', __dirname + '/views'); // set express to look in this folder to render our view
 app.set('view engine', 'ejs'); // configure template engine
+// app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json()); // parse form data client
 app.use(express.static(path.join(__dirname, 'public'))); // configure express to use public folder
@@ -46,11 +48,49 @@ app.use(fileUpload()); // configure fileupload
 
 // routes for the app
 app.set("views", "./views");
-app.set("view engine", "ejs");
+
 
 app.get("/", (req, res) => {
     res.render("index");
 });
+
+app.get('/add-student-warden',(req, res) => {
+    let sql = "SELECT * FROM product";
+    let query = db.query(sql, (err, results) => {
+      if(err) throw err;
+      res.render('product_view.hbs',{
+        results: results
+      });
+    });
+  });
+
+  //route for insert data
+app.post('/save',(req, res) => {
+    let data = {product_name: req.body.product_name, product_price: req.body.product_price};
+    let sql = "INSERT INTO product SET ?";
+    let query = db.query(sql, data,(err, results) => {
+      if(err) throw err;
+      res.redirect('/add-student-warden');
+    });
+  });
+  
+  //route for update data
+  app.post('/update',(req, res) => {
+    let sql = "UPDATE product SET product_name='"+req.body.product_name+"', product_price='"+req.body.product_price+"' WHERE product_id="+req.body.id;
+    let query = db.query(sql, (err, results) => {
+      if(err) throw err;
+      res.redirect('/add-student-warden');
+    });
+  });
+  
+  //route for delete data
+  app.post('/delete',(req, res) => {
+    let sql = "DELETE FROM product WHERE product_id="+req.body.product_id+"";
+    let query = db.query(sql, (err, results) => {
+      if(err) throw err;
+        res.redirect('/add-student-warden');
+    });
+  });
 
 app.get("/add-student", (req, res) => {
     res.render("add-student");
@@ -150,6 +190,6 @@ app.get("/website-warden-dashboard", (req, res) => {
 
 
 // set the app to listen on the port
-app.listen(port, () => {
+app.listen(5000, () => {
     console.log(`Server running on port: ${port}`);
 });
