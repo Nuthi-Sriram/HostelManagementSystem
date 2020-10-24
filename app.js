@@ -12,7 +12,7 @@ const app = express();
 
 //const {getHomePage} = require('./routes/index');
 //const {addPlayerPage, addPlayer, deletePlayer, editPlayer, editPlayerPage} = require('./routes/player');
-const port = 3000;
+ const port = 5000
 app.use(cors());
 app.use(express.json());
 
@@ -190,6 +190,6 @@ app.get("/website-warden-dashboard", (req, res) => {
 
 
 // set the app to listen on the port
-app.listen(5000, () => {
+app.listen(port, () => {
     console.log(`Server running on port: ${port}`);
 });
