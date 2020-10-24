@@ -1,19 +1,19 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>CRUD Node.js and Mysql</title>
-  <link href="/assets/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+	<title>Hostel Management System</title>
+  <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
   <div class="container">
-    <h2>Product List</h2>
+    <h2>Student List</h2>
 		<button class="btn btn-success" data-toggle="modal" data-target="#myModalAdd">Add New</button>
     <table class="table table-striped" id="mytable">
       <thead>
         <tr>
-          <th>Product ID</th>
-          <th>Product Name</th>
-          <th>Price</th>
+          <th>Student ID</th>
+          <th>Student Name</th>
+          <th>RoomNo</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -39,18 +39,18 @@
          <div class="modal-dialog" role="document">
            <div class="modal-content">
              <div class="modal-header">
-               <h5 class="modal-title" id="exampleModalLabel">Add New Product</h5>
+               <h5 class="modal-title" id="exampleModalLabel">Add New Student</h5>
                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                  <span aria-hidden="true">&times;</span>
                </button>
              </div>
              <div class="modal-body">
                <div class="form-group">
-                   <input type="text" name="product_name" class="form-control" placeholder="Product Name" required>
+                   <input type="text" name="product_name" class="form-control" placeholder="Student Name" required>
                </div>
 
                <div class="form-group">
-                   <input type="text" name="product_price" class="form-control" placeholder="Price" required>
+                   <input type="text" name="product_price" class="form-control" placeholder="RoomNo" required>
                </div>
              </div>
              <div class="modal-footer">
@@ -114,8 +114,8 @@
  	     </div>
  	 </form>
 
-<script src="/assets/js/jquery-3.3.1.js"></script>
-<script src="/assets/js/bootstrap.js"></script>
+<script src="/js/jquery-3.3.1.js"></script>
+<script src="/js/bootstrap.js"></script>
 <script>
     $(document).ready(function(){
 			//showing data to modal for edit record
