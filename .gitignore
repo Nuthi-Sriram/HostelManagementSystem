@@ -1,4 +1,3 @@
 .env
 node_modules/
-public/css/fonts
-public/css/vendor/fonts
+
