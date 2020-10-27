@@ -63,10 +63,10 @@ app.get('/add-student-warden', (req, res) => {
     });
   });
 });
-
+ 
 //route for insert data
 app.post('/save', (req, res) => {
-  let data = { product_name: req.body.product_name, product_price: req.body.product_price };
+  let data = { reg_no: req.body.reg_no, room_no: req.body.room_no, block_id: req.body.block_id, stud_name: req.body.stud_name, gender: req.body.gender, dob: req.body.dob, blood_group: req.body.blood_group, email_id: req.body.email_id, address: req.body.address, father_name: req.body.father_name, mother_name: req.body.mother_name, parent_email: req.body.parent_email, course_id: req.body.course_id };
   let sql = "INSERT INTO product SET ?";
   let query = db.query(sql, data, (err, results) => {
     if (err) throw err;

@@ -57,7 +57,7 @@
     </div>
 
     <!-- Add New Product Modal-->
-    <form action="/saveStaff" method="post">
+    <form action="/save" method="post">
         <div class="modal fade" id="myModalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -198,7 +198,7 @@
                         <strong>Are You Sure To Delete This Data?</strong>
                     </div>
                     <div class="modal-footer">
-                        <input type="hidden" name="staff_id" class="form-control staff_id" required>
+                        <input type="hidden" name="reg_no" class="form-control reg_id" required>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-success">Delete</button>
                     </div>
@@ -227,19 +227,19 @@
                 var parent_email = $(this).data('parent_email');
                 var course_id = $(this).data('course_id');
                 $('#EditModal').modal('show');
-                $('.reg_no').val(staff_id);
-                $('.room_no').val(staff_name);
-                $('.block_id').val(gender);
-                $('.stud_name').val(dob);
-                $('.gender').val(email_id);
-                $('.dob').val(staff_role);
-                $('.blood_group').val(salary);
-                $('.email_id').val(salary);
-                $('.address').val(salary);
-                $('.father_name').val(salary);
-                $('.mother_name').val(salary);
-                $('.parent_email').val(salary);
-                $('.course_id').val(salary);
+                $('.reg_no').val(reg_no);
+                $('.room_no').val(room_no);
+                $('.block_id').val(block_id);
+                $('.stud_name').val(stud_name);
+                $('.gender').val(gender);
+                $('.dob').val(dob);
+                $('.blood_group').val(blood_group);
+                $('.email_id').val(email_id);
+                $('.address').val(address);
+                $('.father_name').val(father_name);
+                $('.mother_name').val(mother_name);
+                $('.parent_email').val(parent_email);
+                $('.course_id').val(course_id);
             });
             //showing modal for delete record
             $('#mytable').on('click', '.delete', function () {
