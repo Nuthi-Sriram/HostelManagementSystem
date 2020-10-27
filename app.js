@@ -55,46 +55,44 @@ app.get("/", (req, res) => {
 });
 
 app.get('/add-student-warden', (req, res) => {
-  let sql = "SELECT * FROM product";
+  let sql = "SELECT * FROM Student";
   let query = db.query(sql, (err, results) => {
     if (err) throw err;
-    res.render('product_view.hbs', {
+    res.render('student_view.hbs', {
       results: results
     });
   });
 });
-
+ 
 //route for insert data
 app.post('/save', (req, res) => {
-  let data = { product_name: req.body.product_name, product_price: req.body.product_price };
-  let sql = "INSERT INTO product SET ?";
+  let data = { reg_no: req.body.reg_no, room_no: req.body.room_no, block_id: req.body.block_id, stud_name: req.body.stud_name, gender: req.body.gender, dob: req.body.dob, blood_group: req.body.blood_group, email_id: req.body.email_id, address: req.body.address, father_name: req.body.father_name, mother_name: req.body.mother_name, parent_email: req.body.parent_email, course_id: req.body.course_id };
+  let sql = "INSERT INTO Student SET ?";
   let query = db.query(sql, data, (err, results) => {
     if (err) throw err;
     res.redirect('/add-student-warden');
-  });
+  }); 
 });
-
+   
 //route for update data
 app.post('/update', (req, res) => {
-  let sql = "UPDATE product SET product_name='" + req.body.product_name + "', product_price='" + req.body.product_price + "' WHERE product_id=" + req.body.id;
+  let sql = "UPDATE Student SET reg_no='" + req.body.reg_no + "',room_no='" + req.body.room_no + "', block_id='" + req.body.block_id + "',stud_name='" + req.body.stud_name + "',gender='" + req.body.gender + "',dob='" + req.body.dob + "',blood_group='" + req.body.blood_group + "', email_id='" + req.body.email_id + "', address='" + req.body.address + "', father_name='" + req.body.father_name + "', mother_name='" + req.body.mother_name + "', parent_email='" + req.body.parent_email + "', course_id='" + req.body.course_id + "' WHERE reg_no='" + req.body.reg_no + "'";
   let query = db.query(sql, (err, results) => {
     if (err) throw err;
     res.redirect('/add-student-warden');
   });
-});
-
+}); 
+ 
 //route for delete data
 app.post('/delete', (req, res) => {
-  let sql = "DELETE FROM product WHERE product_id=" + req.body.product_id + "";
+  let sql = "DELETE FROM Student WHERE reg_no='" + req.body.reg_no + "'";
   let query = db.query(sql, (err, results) => {
     if (err) throw err;
     res.redirect('/add-student-warden');
   });
 });
 
-app.get("/add-student", (req, res) => {
-  res.render("add-student");
-});
+
 
 // // create
 // app.post('/insert', (request, response) => {
@@ -177,20 +175,24 @@ app.post('/saveStaff', (req, res) => {
 app.post('/updateStaff', (req, res) => {
   let sql = "UPDATE Staff SET staff_id='" + req.body.staff_id + "',staff_name='" + req.body.staff_name + "', gender='" + req.body.gender + "',dob='" + req.body.dob + "',email_id='" + req.body.email_id + "',staff_role='" + req.body.staff_role + "',salary='" + req.body.salary + "' WHERE staff_id='" + req.body.staff_id + "'";
   let query = db.query(sql, (err, results) => {
-    if (err) throw err; 
-    res.redirect('/add-warden-chiefwarden'); 
+    if (err) throw err;
+    res.redirect('/add-warden-chiefwarden');
   });
-});   
-    
+});
+
 //route for delete data
 app.post('/deleteStaff', (req, res) => {
   let sql = "DELETE FROM Staff WHERE staff_id='" + req.body.staff_id + "'";
   console.log(sql)
-  let query = db.query(sql, (err, results) => { 
-    if (err) throw err; 
+  let query = db.query(sql, (err, results) => {
+    if (err) throw err;
     res.redirect('/add-warden-chiefwarden');
   });
 });
+
+// app.get("/add-student", (req, res) => {
+//   res.render("student_view");
+// });
 
 
 app.get("/pricing", (req, res) => {
