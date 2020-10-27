@@ -12,27 +12,27 @@ const app = express();
 
 //const {getHomePage} = require('./routes/index');
 //const {addPlayerPage, addPlayer, deletePlayer, editPlayer, editPlayerPage} = require('./routes/player');
- const port = 5000
+const port = 5000
 app.use(cors());
 app.use(express.json());
 
 // create connection to database
 // the mysql.createConnection function takes in a configuration object which contains host, user, password and the database name.
 
-const db = mysql.createConnection ({
-    host: 'localhost',
-    user: 'root',
-    password: 'Password123@',
-    database: 'socka'
+const db = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: 'Password123@',
+  database: 'socka'
 });
 
 
 //connect to database
 db.connect((err) => {
-    if (err) {
-        throw err;
-    }
-    console.log('Connected to database');
+  if (err) {
+    throw err;
+  }
+  console.log('Connected to database');
 });
 global.db = db;
 
@@ -51,49 +51,49 @@ app.set("views", "./views");
 
 
 app.get("/", (req, res) => {
-    res.render("index");
+  res.render("index");
 });
 
-app.get('/add-student-warden',(req, res) => {
-    let sql = "SELECT * FROM product";
-    let query = db.query(sql, (err, results) => {
-      if(err) throw err;
-      res.render('product_view.hbs',{
-        results: results
-      });
+app.get('/add-student-warden', (req, res) => {
+  let sql = "SELECT * FROM product";
+  let query = db.query(sql, (err, results) => {
+    if (err) throw err;
+    res.render('product_view.hbs', {
+      results: results
     });
   });
+});
 
-  //route for insert data
-app.post('/save',(req, res) => {
-    let data = {product_name: req.body.product_name, product_price: req.body.product_price};
-    let sql = "INSERT INTO product SET ?";
-    let query = db.query(sql, data,(err, results) => {
-      if(err) throw err;
-      res.redirect('/add-student-warden');
-    });
+//route for insert data
+app.post('/save', (req, res) => {
+  let data = { product_name: req.body.product_name, product_price: req.body.product_price };
+  let sql = "INSERT INTO product SET ?";
+  let query = db.query(sql, data, (err, results) => {
+    if (err) throw err;
+    res.redirect('/add-student-warden');
   });
-  
-  //route for update data
-  app.post('/update',(req, res) => {
-    let sql = "UPDATE product SET product_name='"+req.body.product_name+"', product_price='"+req.body.product_price+"' WHERE product_id="+req.body.id;
-    let query = db.query(sql, (err, results) => {
-      if(err) throw err;
-      res.redirect('/add-student-warden');
-    });
+});
+
+//route for update data
+app.post('/update', (req, res) => {
+  let sql = "UPDATE product SET product_name='" + req.body.product_name + "', product_price='" + req.body.product_price + "' WHERE product_id=" + req.body.id;
+  let query = db.query(sql, (err, results) => {
+    if (err) throw err;
+    res.redirect('/add-student-warden');
   });
-  
-  //route for delete data
-  app.post('/delete',(req, res) => {
-    let sql = "DELETE FROM product WHERE product_id="+req.body.product_id+"";
-    let query = db.query(sql, (err, results) => {
-      if(err) throw err;
-        res.redirect('/add-student-warden');
-    });
+});
+
+//route for delete data
+app.post('/delete', (req, res) => {
+  let sql = "DELETE FROM product WHERE product_id=" + req.body.product_id + "";
+  let query = db.query(sql, (err, results) => {
+    if (err) throw err;
+    res.redirect('/add-student-warden');
   });
+});
 
 app.get("/add-student", (req, res) => {
-    res.render("add-student");
+  res.render("add-student");
 });
 
 // // create
@@ -153,34 +153,71 @@ app.get("/add-student", (req, res) => {
 //         .then(data => response.json({ data: data }))
 //         .catch(err => console.log(err));
 // });
+app.get('/add-warden-chiefwarden', (req, res) => {
+  let sql = "SELECT * FROM Staff";
+  let query = db.query(sql, (err, results) => {
+    if (err) throw err;
+    res.render('warden_view.hbs', {
+      results: results
+    });
+  });
+});
+
+//route for insert data
+app.post('/saveStaff', (req, res) => {
+  let data = { staff_id: req.body.staff_id, staff_name: req.body.staff_name, gender: req.body.gender, dob: req.body.dob, email_id: req.body.email_id, staff_role: req.body.staff_role, salary: req.body.salary };
+  let sql = "INSERT INTO Staff SET ?";
+  let query = db.query(sql, data, (err, results) => {
+    if (err) throw err;
+    res.redirect('/add-warden-chiefwarden');
+  });
+});
+
+//route for update data
+app.post('/updateStaff', (req, res) => {
+  let sql = "UPDATE Staff SET staff_name='" + req.body.staff_name + "', gender='" + req.body.gender + "',dob='" + req.body.dob + "',email_id='" + req.body.email_id + "',staff_role='" + req.body.staff_role + "',salary='" + req.body.salary + "' WHERE staff_id=" + req.body.id;
+  let query = db.query(sql, (err, results) => {
+    if (err) throw err;
+    res.redirect('/add-warden-chiefwarden');
+  });
+});   
+
+//route for delete data
+app.post('/deleteStaff', (req, res) => {
+  let sql = "DELETE FROM Staff WHERE staff_id=" + req.body.staff_id + "";
+  let query = db.query(sql, (err, results) => { 
+    if (err) throw err;
+    res.redirect('/add-warden-chiefwarden');
+  });
+});
 
 
 app.get("/pricing", (req, res) => {
-    res.render("pricing");
+  res.render("pricing");
 });
 app.get("/survey", (req, res) => {
-    res.render("survey");
+  res.render("survey");
 });
 app.get("/website-forum", (req, res) => {
-    res.render("website-forum");
+  res.render("website-forum");
 });
 app.get("/website-forum-thread", (req, res) => {
-    res.render("website-forum-thread");
+  res.render("website-forum-thread");
 });
 app.get("/website-contact", (req, res) => {
-    res.render("website-contact");
+  res.render("website-contact");
 });
 app.get("/login", (req, res) => {
-    res.render("login");
+  res.render("login");
 });
 app.get("/website-student-dashboard", (req, res) => {
-    res.render("website-student-dashboard");
+  res.render("website-student-dashboard");
 });
 app.get("/website-student-profile", (req, res) => {
-    res.render("website-student-profile");
+  res.render("website-student-profile");
 });
 app.get("/website-warden-dashboard", (req, res) => {
-    res.render("website-warden-dashboard");
+  res.render("website-warden-dashboard");
 });
 // app.get('/add', addPlayerPage);
 // app.get('/edit/:id', editPlayerPage);
@@ -191,5 +228,5 @@ app.get("/website-warden-dashboard", (req, res) => {
 
 // set the app to listen on the port
 app.listen(port, () => {
-    console.log(`Server running on port: ${port}`);
+  console.log(`Server running on port: ${port}`);
 });
