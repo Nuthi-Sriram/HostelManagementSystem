@@ -76,7 +76,7 @@ app.post('/save', (req, res) => {
    
 //route for update data
 app.post('/update', (req, res) => {
-  let sql = "UPDATE product SET product_name='" + req.body.product_name + "', product_price='" + req.body.product_price + "' WHERE product_id=" + req.body.id;
+  let sql = "UPDATE Student SET reg_no='" + req.body.reg_no + "',room_no='" + req.body.room_no + "', block_id='" + req.body.block_id + "',stud_name='" + req.body.stud_name + "',gender='" + req.body.gender + "',dob='" + req.body.dob + "',blood_group='" + req.body.blood_group + "', email_id='" + req.body.email_id + "', address='" + req.body.address + "', father_name='" + req.body.father_name + "', mother_name='" + req.body.mother_name + "', parent_email='" + req.body.parent_email + "', course_id='" + req.body.course_id + "' WHERE reg_no='" + req.body.reg_no + "'";
   let query = db.query(sql, (err, results) => {
     if (err) throw err;
     res.redirect('/add-student-warden');
