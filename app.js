@@ -81,11 +81,11 @@ app.post('/update', (req, res) => {
     if (err) throw err;
     res.redirect('/add-student-warden');
   });
-});
+}); 
  
 //route for delete data
 app.post('/delete', (req, res) => {
-  let sql = "DELETE FROM Staff WHERE reg_no='" + req.body.reg_no + "'";
+  let sql = "DELETE FROM Student WHERE reg_no='" + req.body.reg_no + "'";
   let query = db.query(sql, (err, results) => {
     if (err) throw err;
     res.redirect('/add-student-warden');

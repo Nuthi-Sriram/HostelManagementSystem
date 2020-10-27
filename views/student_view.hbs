@@ -198,7 +198,7 @@
                         <strong>Are You Sure To Delete This Data?</strong>
                     </div>
                     <div class="modal-footer">
-                        <input type="hidden" name="reg_no" class="form-control reg_id" required>
+                        <input type="hidden" name="reg_no" class="form-control reg_no" required>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-success">Delete</button>
                     </div>
@@ -244,6 +244,7 @@
             //showing modal for delete record
             $('#mytable').on('click', '.delete', function () {
                 var reg_no = $(this).data('reg_no');
+                console.log(reg_no)
                 $('#DeleteModal').modal('show');
                 $('.reg_no').val(reg_no);
             });
