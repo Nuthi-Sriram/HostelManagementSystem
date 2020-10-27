@@ -55,10 +55,10 @@ app.get("/", (req, res) => {
 });
 
 app.get('/add-student-warden', (req, res) => {
-  let sql = "SELECT * FROM product";
+  let sql = "SELECT * FROM Student";
   let query = db.query(sql, (err, results) => {
     if (err) throw err;
-    res.render('product_view.hbs', {
+    res.render('student_view.hbs', {
       results: results
     });
   });
@@ -92,9 +92,7 @@ app.post('/delete', (req, res) => {
   });
 });
 
-app.get("/add-student", (req, res) => {
-  res.render("add-student");
-});
+
 
 // // create
 // app.post('/insert', (request, response) => {
@@ -191,6 +189,10 @@ app.post('/deleteStaff', (req, res) => {
     res.redirect('/add-warden-chiefwarden');
   });
 });
+
+// app.get("/add-student", (req, res) => {
+//   res.render("student_view");
+// });
 
 
 app.get("/pricing", (req, res) => {

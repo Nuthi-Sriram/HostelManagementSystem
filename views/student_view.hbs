@@ -1,0 +1,255 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Hostel Management System</title>
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="container">
+        <h2>Student List</h2>
+        <button class="btn btn-success" data-toggle="modal" data-target="#myModalAdd">Add New</button>
+        <table class="table table-striped" id="mytable">
+            <thead>
+                <tr>
+                    <th>Reg No</th>
+                    <th>Room No</th>
+                    <th>Block ID</th>
+                    <th>Student Name</th>
+                    <th>Gender</th>
+                    <th>Date of Birth</th>
+                    <th>Blood Group</th>
+                    <th>Email ID</th>
+                    <th>Address</th>
+                    <th>Father Name</th>
+                    <th>Mother Name</th>
+                    <th>Parent Email</th>
+                    <th>Course ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each results}}
+                <tr>
+                    <td>{{ reg_no }}</td>
+                    <td>{{ room_no }}</td>
+                    <td>{{ block_id }}</td>
+                    <td>{{ stud_name }}</td>
+                    <td>{{ gender }}</td>
+                    <td>{{ dob }}</td>
+                    <td>{{ blood_group }}</td>
+                    <td>{{ email_id }}</td>
+                    <td>{{ address }}</td>
+                    <td>{{ father_name }}</td>
+                    <td>{{ mother_name }}</td>
+                    <td>{{ parent_email }}</td>
+                    <td>{{ course_id }}</td>
+                    <td>
+                        <a href="javascript:void(0);" class="btn btn-sm btn-info edit" data-reg_no="{{ reg_no }}"
+                            data-room_no="{{ room_no }}" data-block_id="{{ block_id }}" data-stud_name="{{ stud_name }}" data-gender="{{ gender }}" data-dob="{{ dob }}" data-blood_group="{{ blood_group }}" data-email_id="{{ email_id }}" data-address="{{ address }}" data-father_name="{{ father_name }}" data-mother_name="{{ mother_name }}" data-parent_email="{{ parent_email }}" data-course_id="{{ course_id }}">Edit</a>
+                        <a href="javascript:void(0);" class="btn btn-sm btn-danger delete"
+                            data-reg_no="{{ reg_no }}">Delete</a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Add New Product Modal-->
+    <form action="/saveStaff" method="post">
+        <div class="modal fade" id="myModalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add New Warden</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input type="text" name="reg_no" class="form-control" placeholder="Register No" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="room_no" class="form-control" placeholder="Room No" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="block_id" class="form-control" placeholder="Block ID" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="stud_name" class="form-control" placeholder="Student Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="gender" class="form-control" placeholder="Gender" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="dob" class="form-control" placeholder="Date of Birth " required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" name="blood_group" class="form-control" placeholder="Blood Group" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="email_id" class="form-control" placeholder="Email ID" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="address" class="form-control" placeholder="Address" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="father_name" class="form-control" placeholder="Father Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="mother_name" class="form-control" placeholder="Mother Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="parent_email" class="form-control" placeholder="Parent Email ID" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="course_id" class="form-control" placeholder="Course ID" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- Edit Product Modal-->
+    <form action="/update" method="post">
+        <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Staff</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input type="text" name="reg_no" class="form-control reg_no" placeholder="Register No" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="room_no" class="form-control room_no" placeholder="Room No" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="block_id" class="form-control block_id" placeholder="Block ID" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="stud_name" class="form-control stud_name" placeholder="Student Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="gender" class="form-control gender" placeholder="Gender" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="dob" class="form-control dob" placeholder="Date of Birth " required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" name="blood_group" class="form-control blood_group" placeholder="Blood Group" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="email_id" class="form-control email_id" placeholder="Email ID" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="address" class="form-control address" placeholder="Address" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="father_name" class="form-control father_name" placeholder="Father Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="mother_name" class="form-control mother_name" placeholder="Mother Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="parent_email" class="form-control parent_email" placeholder="Parent Email ID" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="course_id" class="form-control course_id" placeholder="Course ID" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" name="id" class="reg_no">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- Delete Product Modal-->
+    <form id="add-row-form" action="/delete" method="post">
+        <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="myModalLabel">Delete Staff</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body"> 
+                        <strong>Are You Sure To Delete This Data?</strong>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" name="staff_id" class="form-control staff_id" required>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <script src="/js/jquery-3.3.1.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script>
+        $(document).ready(function () {
+            //showing data to modal for edit record
+            $('#mytable').on('click', '.edit', function () {
+                var reg_no = $(this).data('reg_no');
+                var room_no = $(this).data('room_no');
+                var block_id = $(this).data('block_id');
+                var stud_name = $(this).data('stud_name');
+                var gender = $(this).data('gender');
+                var dob = $(this).data('dob');
+                var blood_group = $(this).data('blood_group');
+                var email_id = $(this).data('email_id');
+                var address = $(this).data('address');
+                var father_name = $(this).data('father_name');
+                var mother_name = $(this).data('mother_name');
+                var parent_email = $(this).data('parent_email');
+                var course_id = $(this).data('course_id');
+                $('#EditModal').modal('show');
+                $('.reg_no').val(staff_id);
+                $('.room_no').val(staff_name);
+                $('.block_id').val(gender);
+                $('.stud_name').val(dob);
+                $('.gender').val(email_id);
+                $('.dob').val(staff_role);
+                $('.blood_group').val(salary);
+                $('.email_id').val(salary);
+                $('.address').val(salary);
+                $('.father_name').val(salary);
+                $('.mother_name').val(salary);
+                $('.parent_email').val(salary);
+                $('.course_id').val(salary);
+            });
+            //showing modal for delete record
+            $('#mytable').on('click', '.delete', function () {
+                var reg_no = $(this).data('reg_no');
+                $('#DeleteModal').modal('show');
+                $('.reg_no').val(reg_no);
+            });
+
+        });
+    </script>
+</body>
+
+</html>
