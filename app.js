@@ -71,9 +71,9 @@ app.post('/save', (req, res) => {
   let query = db.query(sql, data, (err, results) => {
     if (err) throw err;
     res.redirect('/add-student-warden');
-  });
+  }); 
 });
- 
+   
 //route for update data
 app.post('/update', (req, res) => {
   let sql = "UPDATE product SET product_name='" + req.body.product_name + "', product_price='" + req.body.product_price + "' WHERE product_id=" + req.body.id;
@@ -85,7 +85,7 @@ app.post('/update', (req, res) => {
  
 //route for delete data
 app.post('/delete', (req, res) => {
-  let sql = "DELETE FROM product WHERE product_id=" + req.body.product_id + "";
+  let sql = "DELETE FROM Staff WHERE reg_no='" + req.body.reg_no + "'";
   let query = db.query(sql, (err, results) => {
     if (err) throw err;
     res.redirect('/add-student-warden');
