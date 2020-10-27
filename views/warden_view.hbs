@@ -33,10 +33,10 @@
                     <td>{{ staff_role }}</td>
                     <td>{{ salary }}</td>
                     <td>
-                        <a href="javascript:void(0);" class="btn btn-sm btn-info edit" data-id="{{ staff_id }}"
-                            data-product_name="{{ staff_name }}" data-product_price="{{ product_price }}">Edit</a>
+                        <a href="javascript:void(0);" class="btn btn-sm btn-info edit" data-staff_id="{{ staff_id }}"
+                            data-staff_name="{{ staff_name }}" data-gender="{{ gender }}" data-dob="{{ dob }}" data-email_id="{{ email_id }}" data-staff_role="{{ staff_role }}" data-salary="{{ salary }}">Edit</a>
                         <a href="javascript:void(0);" class="btn btn-sm btn-danger delete"
-                            data-id="{{ staff_id }}">Delete</a>
+                            data-staff_id="{{ staff_id }}">Delete</a>
                     </td>
                 </tr>
                 {{/each}}
@@ -165,8 +165,10 @@
         $(document).ready(function () {
             //showing data to modal for edit record
             $('#mytable').on('click', '.edit', function () {
-                var staff_id = $(this).data('.staff_id');
+                var staff_id = $(this).data('staff_id');
+                console.log(staff_id)
                 var staff_name = $(this).data('staff_name');
+                console.log(staff_name)
                 var gender = $(this).data('gender');
                 var dob = $(this).data('dob');
                 var email_id = $(this).data('email_id');
@@ -174,12 +176,12 @@
                 var salary = $(this).data('salary');
                 $('#EditModal').modal('show');
                 $('.staff_id').val(staff_id);
-                $('.staff_name').val(product_price);
-                $('.gender').val(product_id);
-                $('.dob').val(product_name);
-                $('.email_id').val(product_price);
-                $('.staff_role').val(product_id);
-                $('.salary').val(product_name);
+                $('.staff_name').val(staff_name);
+                $('.gender').val(gender);
+                $('.dob').val(dob);
+                $('.email_id').val(email_id);
+                $('.staff_role').val(staff_role);
+                $('.salary').val(salary);
             });
             //showing modal for delete record
             $('#mytable').on('click', '.delete', function () {
