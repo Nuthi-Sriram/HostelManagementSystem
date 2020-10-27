@@ -175,16 +175,17 @@ app.post('/saveStaff', (req, res) => {
 
 //route for update data
 app.post('/updateStaff', (req, res) => {
-  let sql = "UPDATE Staff SET staff_id='" + req.body.staff_id + "',staff_name='" + req.body.staff_name + "', gender='" + req.body.gender + "',dob='" + req.body.dob + "',email_id='" + req.body.email_id + "',staff_role='" + req.body.staff_role + "',salary='" + req.body.salary + "' WHERE staff_id=" + req.body.id;
+  let sql = "UPDATE Staff SET staff_id='" + req.body.staff_id + "',staff_name='" + req.body.staff_name + "', gender='" + req.body.gender + "',dob='" + req.body.dob + "',email_id='" + req.body.email_id + "',staff_role='" + req.body.staff_role + "',salary='" + req.body.salary + "' WHERE staff_id='" + req.body.staff_id + "'";
   let query = db.query(sql, (err, results) => {
-    if (err) throw err;
+    if (err) throw err; 
     res.redirect('/add-warden-chiefwarden'); 
   });
 });   
     
 //route for delete data
 app.post('/deleteStaff', (req, res) => {
-  let sql = "DELETE FROM Staff WHERE staff_id=" + req.body.staff_id + "";
+  let sql = "DELETE FROM Staff WHERE staff_id='" + req.body.staff_id + "'";
+  console.log(sql)
   let query = db.query(sql, (err, results) => { 
     if (err) throw err; 
     res.redirect('/add-warden-chiefwarden');
