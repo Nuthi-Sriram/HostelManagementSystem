@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Learning</title>
+  <title>Hostel Management</title>
 
   <!-- Vendor CSS BUNDLE
     Includes styling for all of the 3rd party libraries used with this module, such as Bootstrap, Font Awesome and others.
@@ -87,7 +87,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
         <div class="panel panel-default text-center paper-shadow" data-z="0.5">
           <h1 class="text-display-1 text-center margin-bottom-none">Sign In</h1>
           <img src="images/people/110/guy-5.jpg" class="img-circle width-80">
-          <div class="panel-body">
+          <!-- <div class="panel-body">
             <div class="form-group">
               <div class="form-control-material">
                 <input class="form-control" id="username" type="text" placeholder="Username">
@@ -99,11 +99,32 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                 <input class="form-control" id="password" type="password" placeholder="Enter Password">
                 <label for="password">Password</label>
               </div>
+            </div> -->
+            <form action="/signin" method="POST">
+              <div class="form-group">
+                <div class="form-group">
+                  <div class="form-control-material">
+                <label for="_email">Email</label>
+                <input type="text" name="user_email" id="_email" class="form-control" placeholder="Email" rnodeequired>
+              </div>
+              </div>
             </div>
+              <div class="form-group">
+                <label for="_pass">Password</label>
+                <input type="password" name="user_pass" id="_pass" class="form-control" placeholder="Password" required>
+              </div>
+              <% if (locals.login_errors) { 
+                login_errors.forEach(function(error_msg){ %>
+                <div class="alert alert-danger" role="alert"><%= error_msg %></div>
+              <% });
+              } %>
+              <button type="submit" class="btn btn-primary">Login</button>
+          </form>
+      </div>
 
-            <a href="/website-student-dashboard" class="btn btn-primary">Login <i class="fa fa-fw fa-unlock-alt"></i></a>
-            <a href="login.html#" class="forgot-password">Forgot password?</a>
-            <a href="sign-up.html" class="link-text-color">Create account</a>
+            <!-- <a href="/website-student-dashboard" class="btn btn-primary">Login <i class="fa fa-fw fa-unlock-alt"></i></a> -->
+            <a href="/sign-up" class="forgot-password">Forgot password?</a>
+            <a href="/sign-up" class="link-text-color">Create account</a>
           </div>
         </div>
       </div>
@@ -113,7 +134,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 
   <!-- Footer -->
   <footer class="footer">
-    <strong>Learning</strong> v1.1.0 &copy; Copyright 2020
+    <strong>Hostel Management</strong> v1.1.0 &copy; Copyright 2020
   </footer>
   <!-- // Footer -->
   <!-- Inline Script for colors and config objects; used by various external scripts; -->

@@ -16,7 +16,7 @@ const app = express();
 
 //const {getHomePage} = require('./routes/index');
 //const {addPlayerPage, addPlayer, deletePlayer, editPlayer, editPlayerPage} = require('./routes/player');
-const port = 3000
+const port = 9000
 app.use(cors());
 app.use(express.json());  
  
@@ -281,7 +281,7 @@ app.post('/register', ifLoggedin,
             // INSERTING USER INTO DATABASE
             dbConnection.execute("INSERT INTO `users`(`name`,`email`,`password`) VALUES(?,?,?)",[user_name,user_email, hash_pass])
             .then(result => {
-                res.send(`your account has been created successfully, Now you can <a href="/">Login</a>`);
+                res.send(`your account has been created successfully, Now you can <a href="/login">Login</a>`);
             }).catch(err => {
                 // THROW INSERTING USER ERROR'S
                 if (err) throw err;
@@ -305,8 +305,8 @@ app.post('/register', ifLoggedin,
     }
 });// END OF REGISTER PAGE
 
-// LOGIN PAGE
-app.post('/login', ifLoggedin, [
+// LOGIN PAGE 
+app.post('/signin', ifLoggedin, [
   body('user_email').custom((value) => {
       return dbConnection.execute('SELECT `email` FROM `users` WHERE `email`=?', [value])
       .then(([rows]) => {
@@ -332,10 +332,10 @@ app.post('/login', ifLoggedin, [
                   req.session.isLoggedIn = true;
                   req.session.userID = rows[0].id;
 
-                  res.redirect('/');
+                  res.redirect('/website-warden-dashboard');
               }
               else{
-                  res.render('login-register',{
+                  res.render('sign-up',{
                       login_errors:['Invalid Password!']
                   });
               }
@@ -354,7 +354,7 @@ app.post('/login', ifLoggedin, [
           return error.msg;
       });
       // REDERING login-register PAGE WITH LOGIN VALIDATION ERRORS
-      res.render('login-register',{
+      res.render('sign-up',{
           login_errors:allErrors
       });
   }
