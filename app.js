@@ -1,4 +1,5 @@
 const express = require('express');
+const user=require('./routes/user');
 const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
@@ -15,6 +16,8 @@ const app = express();
 const port = 5000
 app.use(cors());
 app.use(express.json());
+var session = require('express-session');
+
 
 // create connection to database
 // the mysql.createConnection function takes in a configuration object which contains host, user, password and the database name.
@@ -46,6 +49,12 @@ app.use(bodyParser.json()); // parse form data client
 app.use(express.static(path.join(__dirname, 'public'))); // configure express to use public folder
 app.use(fileUpload()); // configure fileupload
 
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { maxAge: 60000 }
+}))
 // routes for the app
 app.set("views", "./views");
 
@@ -63,7 +72,7 @@ app.get('/add-student-warden', (req, res) => {
     });
   });
 });
- 
+
 //route for insert data
 app.post('/save', (req, res) => {
   let data = { reg_no: req.body.reg_no, room_no: req.body.room_no, block_id: req.body.block_id, stud_name: req.body.stud_name, gender: req.body.gender, dob: req.body.dob, blood_group: req.body.blood_group, email_id: req.body.email_id, address: req.body.address, father_name: req.body.father_name, mother_name: req.body.mother_name, parent_email: req.body.parent_email, course_id: req.body.course_id };
@@ -71,9 +80,9 @@ app.post('/save', (req, res) => {
   let query = db.query(sql, data, (err, results) => {
     if (err) throw err;
     res.redirect('/add-student-warden');
-  }); 
+  });
 });
-   
+
 //route for update data
 app.post('/update', (req, res) => {
   let sql = "UPDATE Student SET reg_no='" + req.body.reg_no + "',room_no='" + req.body.room_no + "', block_id='" + req.body.block_id + "',stud_name='" + req.body.stud_name + "',gender='" + req.body.gender + "',dob='" + req.body.dob + "',blood_group='" + req.body.blood_group + "', email_id='" + req.body.email_id + "', address='" + req.body.address + "', father_name='" + req.body.father_name + "', mother_name='" + req.body.mother_name + "', parent_email='" + req.body.parent_email + "', course_id='" + req.body.course_id + "' WHERE reg_no='" + req.body.reg_no + "'";
@@ -81,8 +90,8 @@ app.post('/update', (req, res) => {
     if (err) throw err;
     res.redirect('/add-student-warden');
   });
-}); 
- 
+});
+
 //route for delete data
 app.post('/delete', (req, res) => {
   let sql = "DELETE FROM Student WHERE reg_no='" + req.body.reg_no + "'";
@@ -213,6 +222,7 @@ app.get("/website-contact", (req, res) => {
 app.get("/login", (req, res) => {
   res.render("login");
 });
+app.post('/login', user.login);//call for login post
 app.get("/website-student-dashboard", (req, res) => {
   res.render("website-student-dashboard");
 });
@@ -227,7 +237,9 @@ app.get("/website-warden-dashboard", (req, res) => {
 // app.get('/delete/:id', deletePlayer);
 // app.post('/add', addPlayer);
 // app.post('/edit/:id', editPlayer);
-
+app.get("/sign-up", (req, res) => {
+  res.render("sign-up");
+});
 
 // set the app to listen on the port
 app.listen(port, () => {
