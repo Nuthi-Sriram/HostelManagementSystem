@@ -16,7 +16,7 @@ const app = express();
 
 //const {getHomePage} = require('./routes/index');
 //const {addPlayerPage, addPlayer, deletePlayer, editPlayer, editPlayerPage} = require('./routes/player');
-const port = 9000
+const port = 5000
 app.use(cors());
 app.use(express.json());  
  
@@ -33,7 +33,7 @@ const db = mysql.createConnection({
 app.use(cookieSession({
   name: 'session',
   keys: ['key1', 'key2'],
-  maxAge:  3600 * 1000 // 1hr
+  maxAge:  5 * 1000 // 1hr
 }));
 
 // DECLARING CUSTOM MIDDLEWARE
