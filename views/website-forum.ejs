@@ -76,6 +76,8 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
+<script src="../../socket.io/socket.io.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
 </head>
 
 <body>
@@ -97,6 +99,62 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
     </div>
   </div>
 
+  <form onsubmit="return sendMessage(this);">
+    <input id="message" placeholder="Start thread">
+    <input type="submit" value="Send">
+  </form>
+  <ul id="messages"></ul>
+  <script>
+    var server = `http://localhost:${window.location.port}`;
+  
+    var io = io(server);
+  
+    function sendMessage() {
+      var message = document.getElementById("message");
+  
+      io.emit("new_message", message.value);
+      return false;
+    }
+  
+    $.ajax({
+      url: server + "/get_messages",
+      method: "GET",
+      success: function (response) {
+        console.log(response);
+        var messages = document.getElementById("messages");
+        var data = JSON.parse(response);
+        for (var a = 0; a < data.length; a++) {
+          var li = document.createElement("li");
+          li.innerHTML = data[a].message;
+          li.innerHTML += "<button data-id='" + data[a].id + "' onclick='deleteMessage(this);'>Delete</button>";
+  
+          messages.appendChild(li);
+        }
+      }
+    })
+  
+    function deleteMessage(self) {
+      var id = self.getAttribute("data-id");
+      io.emit("delete_message", id);
+    }
+    io.on("delete_message", function (id) {
+      //document.getElementById("message-" + id).innerHTML = "<i>Message has been deleted</i>";
+      var node=Document.getElementById("message-"+id);
+      node.innerHTML="This message has been deleted";
+    });
+    io.on("new_message", function (data) {
+      console.log("Server says", data);
+  
+      var li = document.createElement("li");
+      li.id = "message-" + data.id;
+      li.innerHTML = data.message;
+      li.innerHTML += "<button data-id='" + data.id + "' onclick='deleteMessage(this);'>Delete</button>";
+      var messages = document.getElementById("messages");
+      messages.appendChild(li);
+    })
+  </script>
+
+  
   <div class="container">
     <div class="page-section">
 

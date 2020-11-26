@@ -19,9 +19,13 @@ const io = require('socket.io')(http);
 
 //const {getHomePage} = require('./routes/index');
 //const {addPlayerPage, addPlayer, deletePlayer, editPlayer, editPlayerPage} = require('./routes/player');
-const port = 1000;  
+const port = 7000;  
 app.use(cors());
-app.use(express.json());  
+app.use(express.json()); 
+app.use(function (req, res, next) {
+	res.setHeader('Access-Control-Allow-Origin', '*');
+	next();
+});
 io.sockets.on('connection', function(socket) {
   socket.on('username', function(username) {
       socket.username = username;
@@ -37,7 +41,7 @@ io.sockets.on('connection', function(socket) {
   });
 
 });
-
+ 
 
 // create connection to database
 // the mysql.createConnection function takes in a configuration object which contains host, user, password and the database name.
@@ -391,6 +395,38 @@ app.post('/signin', ifLoggedin, [
   }
 });
 // END OF LOGIN PAGE
+// Forume Code
+io.on("connection", function (socket) {
+	console.log("socket connected = " + socket.id);
+
+	socket.on("delete_message", function (id) {
+	//	console.log('time to delete');
+		db.query("DELETE FROM messages WHERE id = '" + id + "'", function (error, result) {
+			io.emit("delete_message", id);
+		});
+	}); 
+ 
+	socket.on("new_message", function (data) {
+		console.log("Client says", data)
+
+	
+		io.emit("new_message", data);
+
+		db.query("INSERT INTO messages(message) VALUES('" + data + "')", function (error, result) {
+			//data.id = result.insertId; 
+			io.emit("new_message", {
+				id: result.insertId,
+				message: data
+			})
+		});
+	});
+});
+
+app.get("/get_messages", function (request, result) {
+	db.query("SELECT * FROM messages", function (error, messages) {
+		result.end(JSON.stringify(messages));
+	});
+});
 
 // LOGOUT
 app.get('/logout',(req,res)=>{
