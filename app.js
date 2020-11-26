@@ -12,14 +12,33 @@ const { body, validationResult } = require('express-validator');
 const dbConnection = require('./database');
 dotenv.config();
 const app = express();
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+
 //const dbService = require('./dbService'); 
 
 //const {getHomePage} = require('./routes/index');
 //const {addPlayerPage, addPlayer, deletePlayer, editPlayer, editPlayerPage} = require('./routes/player');
-const port = 5000
+const port = 1000;  
 app.use(cors());
 app.use(express.json());  
- 
+io.sockets.on('connection', function(socket) {
+  socket.on('username', function(username) {
+      socket.username = username;
+      io.emit('is_online', '🔵 <i>' + socket.username + ' join the chat..</i>');
+  });
+
+  socket.on('disconnect', function(username) {
+      io.emit('is_online', '🔴 <i>' + socket.username + ' left the chat..</i>');
+  })
+
+  socket.on('chat_message', function(message) {
+      io.emit('chat_message', '<strong>' + socket.username + '</strong>: ' + message);
+  });
+
+});
+
+
 // create connection to database
 // the mysql.createConnection function takes in a configuration object which contains host, user, password and the database name.
 
@@ -246,6 +265,9 @@ app.get("/website-student-dashboard", (req, res) => {
 app.get("/website-student-profile", (req, res) => {
   res.render("website-student-profile");
 });
+app.get("/realTimeForum", (req, res) => {
+  res.render("realTimeForum");
+});
 // app.get("/website-warden-dashboard", (req, res) => {
 //   res.render("website-warden-dashboard");
 // });
@@ -346,7 +368,7 @@ app.post('/signin', ifLoggedin, [
               else{
                   res.render('sign-up',{
                       login_errors:['Invalid Password!']
-                  });
+                  }); 
               }
           })
           .catch(err => {
@@ -378,6 +400,7 @@ app.get('/logout',(req,res)=>{
 });
 // END OF LOGOUT
 // set the app to listen on the port
-app.listen(port, () => {
+http.listen(port, () => {
   console.log(`Server running on port: ${port}`);
 });
+      
