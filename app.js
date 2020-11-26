@@ -33,16 +33,16 @@ const db = mysql.createConnection({
 app.use(cookieSession({
   name: 'session',
   keys: ['key1', 'key2'],
-  maxAge:  5 * 1000 // 1hr
+  maxAge:  5 * 1000 //5 seconds
 }));
 
 // DECLARING CUSTOM MIDDLEWARE
-// const ifNotLoggedin = (req, res, next) => {
-//   if(!req.session.isLoggedIn){
-//       return res.render('login');
-//   }
-//   next();
-// }
+const ifNotLoggedin = (req, res, next) => {
+  if(!req.session.isLoggedIn){
+      return res.render('login');
+  }
+  next();
+}
 const ifLoggedin = (req,res,next) => {
   if(req.session.isLoggedIn){
       return res.redirect('/');
@@ -246,9 +246,18 @@ app.get("/website-student-dashboard", (req, res) => {
 app.get("/website-student-profile", (req, res) => {
   res.render("website-student-profile");
 });
-app.get("/website-warden-dashboard", (req, res) => {
-  res.render("website-warden-dashboard");
-});
+// app.get("/website-warden-dashboard", (req, res) => {
+//   res.render("website-warden-dashboard");
+// });
+app.get('/website-warden-dashboard', ifNotLoggedin, (req,res,next) => {
+  dbConnection.execute("SELECT `name` FROM `users` WHERE `id`=?",[req.session.userID])
+  .then(([rows]) => {
+      res.render('website-warden-dashboard',{
+          name:rows[0].name
+      });
+  });
+  
+});// END OF ROOT PAGE
 // app.get('/add', addPlayerPage);
 // app.get('/edit/:id', editPlayerPage);
 // app.get('/delete/:id', deletePlayer);

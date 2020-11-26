@@ -81,7 +81,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 <body>
 
   <!-- Fixed navbar -->
-  <%-include('partials/navbarPersonal')%>
+  <%-include('partials/navbarWarden')%>
 
   <div class="parallax overflow-hidden bg-blue-400 page-section third">
     <div class="container parallax-layer" data-opacity="true">
@@ -92,11 +92,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
           </a>
         </div>
         <div class="media-body">
-          <h1 class="text-white text-display-1 margin-v-0">John Doe</h1>
+          <h1 class="text-white text-display-1 margin-v-0">Hello, <%= name %></h1>
           <p class="text-subhead"><a class="link-white text-underline" href="http://learning.frontendmatter.com/html/website-instructor-public-profile.html">View public profile</a></p>
         </div>
         <div class="media-right">
-          <span class="label bg-blue-500">Instructor</span>
+          <span class="label bg-blue-500">Warden</span>
         </div>
       </div>
     </div>
