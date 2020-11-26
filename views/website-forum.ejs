@@ -103,7 +103,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
     <input id="message" placeholder="Start thread">
     <input type="submit" value="Send">
   </form>
-  <ul id="messages"></ul>
+  <!-- <ul id="messages"></ul> -->
   <script>
     var server = `http://localhost:${window.location.port}`;
   
@@ -154,7 +154,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
     })
   </script>
 
-  
+
   <div class="container">
     <div class="page-section">
 
@@ -162,12 +162,12 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
         <div class="col-md-8 col-lg-9">
 
           <div class="panel panel-default paper-shadow" data-z="0.5">
-            <ul class="list-group">
+            <ul class="list-group" id="messages">
               <li class="list-group-item">
                 <div class="media v-middle">
                   <div class="media-body">
                     <h4 class="text-headline margin-none">General</h4>
-                    <p class="text-subhead text-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, illo.</p>
+                    <p class="text-subhead text-light">Default category of all messages if not labelled</p>
                   </div>
                   <div class="media-right">
                     <a href="website-forum.html#" class="btn btn-white btn-flat"><i class="fa fa-fw fa-plus"></i> New Topic</a>
@@ -175,7 +175,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                 </div>
               </li>
 
-              <li class="list-group-item media v-middle">
+              <!-- <li class="list-group-item media v-middle">
                 <div class="media-left">
                   <div class="icon-block half img-circle bg-grey-300">
                     <i class="fa fa-file-text text-white"></i>
@@ -236,7 +236,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                 <div class="media-right">
                   <a href="website-forum-thread.html" class="btn btn-white text-light"><i class="fa fa-comments fa-fw"></i> 8</a>
                 </div>
-              </li>
+              </li> -->
 
             </ul>
           </div>
