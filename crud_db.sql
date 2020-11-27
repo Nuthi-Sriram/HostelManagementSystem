@@ -197,11 +197,33 @@ ADD constraint outing2 FOREIGN KEY
 (staff_id) REFERENCES Staff
 (staff_id);
 
-CREATE TABLE `users` (
- `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
- `name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
- `email` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
- `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
- PRIMARY KEY (`id`),
- UNIQUE KEY `email` (`email`)
+CREATE TABLE `users`
+(
+ `id` int
+(10) unsigned NOT NULL AUTO_INCREMENT,
+ `name` varchar
+(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+ `email` varchar
+(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+ `password` varchar
+(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+ PRIMARY KEY
+(`id`),
+ UNIQUE KEY `email`
+(`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+CREATE TABLE article
+(
+    id int PRIMARY KEY NOT NULL
+    AUTO_INCREMENT, author varchar
+    (50) NOT NULL, title text NOT NULL, brief text , onindex tinyint NOT NULL, createtime DATETIME NOT NULL, updatetime DATETIME NOT NULL, content text, type text );
+
+
+    CREATE TABLE forumuser( id int NOT NULL PRIMARY KEY AUTO_INCREMENT, username varchar
+    (50) NOT NULL UNIQUE , password varchar
+    (50) NOT NULL, lv int NOT NULL );    
+
+    INSERT INTO forumuser (`username`,`password`,`lv`)VALUES('test','test','15');
+

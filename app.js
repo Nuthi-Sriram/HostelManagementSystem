@@ -12,14 +12,37 @@ const { body, validationResult } = require('express-validator');
 const dbConnection = require('./database');
 dotenv.config();
 const app = express();
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+
 //const dbService = require('./dbService'); 
 
 //const {getHomePage} = require('./routes/index');
 //const {addPlayerPage, addPlayer, deletePlayer, editPlayer, editPlayerPage} = require('./routes/player');
-const port = 5000
+const port = 7000;  
 app.use(cors());
-app.use(express.json());  
+app.use(express.json()); 
+app.use(function (req, res, next) {
+	res.setHeader('Access-Control-Allow-Origin', '*');
+	next();
+});
+io.sockets.on('connection', function(socket) {
+  socket.on('username', function(username) {
+      socket.username = username;
+      io.emit('is_online', '🔵 <i>' + socket.username + ' join the chat..</i>');
+  });
+
+  socket.on('disconnect', function(username) {
+      io.emit('is_online', '🔴 <i>' + socket.username + ' left the chat..</i>');
+  })
+
+  socket.on('chat_message', function(message) {
+      io.emit('chat_message', '<strong>' + socket.username + '</strong>: ' + message);
+  });
+
+});
  
+
 // create connection to database
 // the mysql.createConnection function takes in a configuration object which contains host, user, password and the database name.
 
@@ -33,16 +56,16 @@ const db = mysql.createConnection({
 app.use(cookieSession({
   name: 'session',
   keys: ['key1', 'key2'],
-  maxAge:  5 * 1000 // 1hr
+  maxAge:  5 * 1000 //5 seconds
 }));
 
 // DECLARING CUSTOM MIDDLEWARE
-// const ifNotLoggedin = (req, res, next) => {
-//   if(!req.session.isLoggedIn){
-//       return res.render('login');
-//   }
-//   next();
-// }
+const ifNotLoggedin = (req, res, next) => {
+  if(!req.session.isLoggedIn){
+      return res.render('login');
+  }
+  next();
+}
 const ifLoggedin = (req,res,next) => {
   if(req.session.isLoggedIn){
       return res.redirect('/');
@@ -246,9 +269,21 @@ app.get("/website-student-dashboard", (req, res) => {
 app.get("/website-student-profile", (req, res) => {
   res.render("website-student-profile");
 });
-app.get("/website-warden-dashboard", (req, res) => {
-  res.render("website-warden-dashboard");
+app.get("/realTimeForum", (req, res) => {
+  res.render("realTimeForum");
 });
+// app.get("/website-warden-dashboard", (req, res) => {
+//   res.render("website-warden-dashboard");
+// });
+app.get('/website-warden-dashboard', ifNotLoggedin, (req,res,next) => {
+  dbConnection.execute("SELECT `name` FROM `users` WHERE `id`=?",[req.session.userID])
+  .then(([rows]) => {
+      res.render('website-warden-dashboard',{
+          name:rows[0].name
+      });
+  });
+  
+});// END OF ROOT PAGE
 // app.get('/add', addPlayerPage);
 // app.get('/edit/:id', editPlayerPage);
 // app.get('/delete/:id', deletePlayer);
@@ -337,7 +372,7 @@ app.post('/signin', ifLoggedin, [
               else{
                   res.render('sign-up',{
                       login_errors:['Invalid Password!']
-                  });
+                  }); 
               }
           })
           .catch(err => {
@@ -360,6 +395,38 @@ app.post('/signin', ifLoggedin, [
   }
 });
 // END OF LOGIN PAGE
+// Forume Code
+io.on("connection", function (socket) {
+	console.log("socket connected = " + socket.id);
+
+	socket.on("delete_message", function (id) {
+	//	console.log('time to delete');
+		db.query("DELETE FROM messages WHERE id = '" + id + "'", function (error, result) {
+			io.emit("delete_message", id);
+		});
+	}); 
+ 
+	socket.on("new_message", function (data) {
+		console.log("Client says", data)
+
+	
+		io.emit("new_message", data);
+
+		db.query("INSERT INTO messages(message) VALUES('" + data + "')", function (error, result) {
+			//data.id = result.insertId; 
+			io.emit("new_message", {
+				id: result.insertId,
+				message: data
+			})
+		});
+	});
+});
+
+app.get("/get_messages", function (request, result) {
+	db.query("SELECT * FROM messages", function (error, messages) {
+		result.end(JSON.stringify(messages));
+	});
+});
 
 // LOGOUT
 app.get('/logout',(req,res)=>{
@@ -369,6 +436,7 @@ app.get('/logout',(req,res)=>{
 });
 // END OF LOGOUT
 // set the app to listen on the port
-app.listen(port, () => {
+http.listen(port, () => {
   console.log(`Server running on port: ${port}`);
 });
+      

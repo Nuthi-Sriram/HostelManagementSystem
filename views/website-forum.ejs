@@ -76,6 +76,8 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
+<script src="../../socket.io/socket.io.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
 </head>
 
 <body>
@@ -97,6 +99,62 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
     </div>
   </div>
 
+  <form onsubmit="return sendMessage(this);">
+    <input id="message" placeholder="Start thread">
+    <input type="submit" value="Send">
+  </form>
+  <!-- <ul id="messages"></ul> -->
+  <script>
+    var server = `http://localhost:${window.location.port}`;
+  
+    var io = io(server);
+  
+    function sendMessage() {
+      var message = document.getElementById("message");
+  
+      io.emit("new_message", message.value);
+      return false;
+    }
+  
+    $.ajax({
+      url: server + "/get_messages",
+      method: "GET",
+      success: function (response) {
+        console.log(response);
+        var messages = document.getElementById("messages");
+        var data = JSON.parse(response);
+        for (var a = 0; a < data.length; a++) {
+          var li = document.createElement("li");
+          li.innerHTML = data[a].message;
+          li.innerHTML += "<button data-id='" + data[a].id + "' onclick='deleteMessage(this);'>Delete</button>";
+  
+          messages.appendChild(li);
+        }
+      }
+    })
+  
+    function deleteMessage(self) {
+      var id = self.getAttribute("data-id");
+      io.emit("delete_message", id);
+    }
+    io.on("delete_message", function (id) {
+      //document.getElementById("message-" + id).innerHTML = "<i>Message has been deleted</i>";
+      var node=Document.getElementById("message-"+id);
+      node.innerHTML="This message has been deleted";
+    });
+    io.on("new_message", function (data) {
+      console.log("Server says", data);
+  
+      var li = document.createElement("li");
+      li.id = "message-" + data.id;
+      li.innerHTML = data.message;
+      li.innerHTML += "<button data-id='" + data.id + "' onclick='deleteMessage(this);'>Delete</button>";
+      var messages = document.getElementById("messages");
+      messages.appendChild(li);
+    })
+  </script>
+
+
   <div class="container">
     <div class="page-section">
 
@@ -104,12 +162,12 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
         <div class="col-md-8 col-lg-9">
 
           <div class="panel panel-default paper-shadow" data-z="0.5">
-            <ul class="list-group">
+            <ul class="list-group" id="messages">
               <li class="list-group-item">
                 <div class="media v-middle">
                   <div class="media-body">
                     <h4 class="text-headline margin-none">General</h4>
-                    <p class="text-subhead text-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, illo.</p>
+                    <p class="text-subhead text-light">Default category of all messages if not labelled</p>
                   </div>
                   <div class="media-right">
                     <a href="website-forum.html#" class="btn btn-white btn-flat"><i class="fa fa-fw fa-plus"></i> New Topic</a>
@@ -117,7 +175,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                 </div>
               </li>
 
-              <li class="list-group-item media v-middle">
+              <!-- <li class="list-group-item media v-middle">
                 <div class="media-left">
                   <div class="icon-block half img-circle bg-grey-300">
                     <i class="fa fa-file-text text-white"></i>
@@ -178,7 +236,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                 <div class="media-right">
                   <a href="website-forum-thread.html" class="btn btn-white text-light"><i class="fa fa-comments fa-fw"></i> 8</a>
                 </div>
-              </li>
+              </li> -->
 
             </ul>
           </div>
