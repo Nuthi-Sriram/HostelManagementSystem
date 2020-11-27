@@ -275,6 +275,20 @@ app.get("/realTimeForum", (req, res) => {
 // app.get("/website-warden-dashboard", (req, res) => {
 //   res.render("website-warden-dashboard");
 // });
+
+// app.get('/website-chiefwarden-dashboard', ifNotLoggedin, (req,res,next) => {
+//   dbConnection.execute("SELECT `name` FROM `users` WHERE `id`=?",[req.session.userID])
+//   .then(([rows]) => {
+//       res.render('website-warden-dashboard',{
+//           name:rows[0].name
+//       });
+//   });
+  
+// });    
+app.get("/website-chiefwarden-dashboard", (req, res) => {
+  res.render("website-chiefwarden-dashboard");
+});
+ 
 app.get('/website-warden-dashboard', ifNotLoggedin, (req,res,next) => {
   dbConnection.execute("SELECT `name` FROM `users` WHERE `id`=?",[req.session.userID])
   .then(([rows]) => {
@@ -404,8 +418,8 @@ io.on("connection", function (socket) {
 		db.query("DELETE FROM messages WHERE id = '" + id + "'", function (error, result) {
 			io.emit("delete_message", id);
 		});
-	}); 
- 
+	});    
+          
 	socket.on("new_message", function (data) {
 		console.log("Client says", data)
 
