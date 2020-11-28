@@ -100,7 +100,9 @@ app.set("views", "./views");
 app.get("/", (req, res) => {
   res.render("index");
 });
-
+app.get("/app-student-billing", (req, res) => {
+  res.render("app-student-billing");
+});
 app.get('/add-student-warden', (req, res) => {
   let sql = "SELECT * FROM Student";
   let query = db.query(sql, (err, results) => {
@@ -288,6 +290,9 @@ app.get("/survey", (req, res) => {
 });
 app.get("/website-forum", (req, res) => {
   res.render("website-forum");
+});
+app.get("/add-student-complaint", (req, res) => {
+  res.render("add-student-complaint");
 });
 app.get("/website-forum-thread", (req, res) => {
   res.render("website-forum-thread");
@@ -477,6 +482,40 @@ io.on("connection", function (socket) {
 app.get("/get_messages", function (request, result) {
 	db.query("SELECT * FROM messages", function (error, messages) {
 		result.end(JSON.stringify(messages));
+	});
+});
+
+//Complaint Raise Code
+
+io.on("connection", function (socket) {
+	console.log("socket connected = " + socket.id);
+
+	socket.on("delete_complaint", function (id) {
+	//	console.log('time to delete');
+		db.query("DELETE FROM Complaints WHERE id = '" + id + "'", function (error, result) {
+			io.emit("delete_complaint", id);
+		});
+	});    
+          
+	socket.on("new_complaint", function (data) {
+		console.log("Client says", data)
+
+	
+		io.emit("new_complaint", data);
+
+		db.query("INSERT INTO Complaints(complaint) VALUES('" + data + "')", function (error, result) {
+			data.id = result.insertId; 
+			io.emit("new_complaint", {
+				id: result.insertId,
+				complaint: data
+			})
+		});
+	});
+});
+
+app.get("/get_complaint", function (request, result) {
+	db.query("SELECT * FROM Complaints", function (error, Complaints) {
+		result.end(JSON.stringify(Complaints));
 	});
 });
 
