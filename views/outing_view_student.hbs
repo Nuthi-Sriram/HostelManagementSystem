@@ -1,0 +1,145 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Hostel Management System</title>
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="container">
+        <h2>Outing Details</h2>
+        <button class="btn btn-success" data-toggle="modal" data-target="#myModalAdd">Request for outing</button>
+        <table class="table table-striped" id="mytable">
+            <thead>
+                <tr>
+                    <th>Gatepass ID</th>
+                    <th>Reg No</th>
+                    <th>Outing Type</th>
+                    <th>Purpose</th>
+                    <th>Out date_time</th>
+                    <th>ExpectedIn_date_time</th>
+                    <th>ActualIn_date_time</th>
+                    <th>Current Status</th>
+                    <th>Staff ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each results}}
+                <tr>
+                    <td>{{ gatepass_id }}</td>
+                    <td>{{ reg_no }}</td>
+                    <td>{{ outing_type }}</td>
+                    <td>{{ purpose }}</td>
+                    <td>{{ Out_date_time }}</td>
+                    <td>{{ expectedin_date_time }}</td>
+                    <td>{{ actualin_date_time }}</td>
+                    <td>{{ current_status }}</td>
+                    <td>{{ staff_id }}</td>
+                    <td>
+                        <a href="javascript:void(0);" class="btn btn-sm btn-info edit" data-actualin_date_time="{{ actualin_date_time }}">Edit</a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Add New gatepass request Modal-->
+    <form action="/request" method="post">
+        <div class="modal fade" id="myModalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Gatepass form</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input type="text" name="reg_no" class="form-control" placeholder="Register No" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="outing_type" class="form-control" placeholder="Outing Type" required>
+                        </div>
+                        <div class="form-group">
+                            <p>Purpose</p>
+                            <input type="radio" name="purpose" value="LocalGuardian's House" >
+                            <label for="LocalGuardian's House">LocalGuardian's House</label><br>
+                            <input type="radio" name="purpose" value="Home Town" >
+                            <label for="Home Town">Home Town</label><br>
+                            <input type="radio" name="purpose" value="To buy essential commodities" >
+                            <label for="To buy essential commodities">To buy essential commodities</label><br>
+                            <input type="radio" name="purpose" value="Other" >
+                            <label for="Other">Other</label><br>
+                        </div>
+                        <div class="form-group">
+                            <p>Out Date and Time</p>
+                            <input type="datetime-local" name="out_date_time" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <p>Expected In date and time</p>
+                            <input type="datetime-local" name="expectedin_date_time" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <p>Actual In date and time</p>
+                            <input type="datetime-local" name="actualin_date_time" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="staff_id" class="form-control" placeholder="Staff ID" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+<!-- Edit gatepass request Modal-->
+    <form action="/updateTime" method="post">
+        <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Actual In date and time</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <p>Actual In date and time</p>
+                            <input type="datetime-local" name="actualin_date_time" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" name="id" class="gatepass_id">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <script src="/js/jquery-3.3.1.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script>
+        $(document).ready(function () {
+            //showing data to modal for edit record
+            $('#mytable').on('click', '.edit', function () {
+                var actualin_date_time = $(this).data('actualin_date_time');
+                $('#EditModal').modal('show'); 
+                $('.actualin_date_time').val(actualin_date_time);
+            });
+        });
+    </script>
+</body>
+
+</html>
