@@ -48,9 +48,9 @@ io.sockets.on('connection', function(socket) {
 
 const db = mysql.createConnection({
   host: 'localhost',
-  user: 'root',
-  password: 'Password123@',
-  database: 'socka'
+  user: 'Demo',
+  password: 'Demo@123',
+  database: 'hostel'
 });
 // APPLY COOKIE SESSION MIDDLEWARE
 app.use(cookieSession({
