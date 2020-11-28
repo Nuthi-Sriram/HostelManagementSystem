@@ -110,7 +110,45 @@ app.get('/add-student-warden', (req, res) => {
     });
   });
 });
+
+app.get('/add-student-localguardian', (req, res) => {
+  let sql = "SELECT * FROM LocalGuardian";
+  let query = db.query(sql, (err, results) => {
+    if (err) throw err;
+    res.render('studentGuardian_view.hbs', {
+      results: results
+    });
+  });
+});
+
+//route for insert data
+app.post('/saveLocalGuardian', (req, res) => {
+  let data = { guardian_name: req.body.guardian_name, reg_no: req.body.reg_no,  gender: req.body.gender, relation: req.body.relation, email_id: req.body.email_id, address: req.body.address};
+  let sql = "INSERT INTO LocalGuardian SET ?";
+  let query = db.query(sql, data, (err, results) => {
+    if (err) throw err;
+    res.redirect('/add-student-localguardian');
+  }); 
+});
+   
+//route for update data
+app.post('/updateLocalGuardian', (req, res) => {
+  let sql = "UPDATE LocalGuardian SET guardian_name='" + req.body.guardian_name + "',reg_no='" + req.body.reg_no + "',gender='" + req.body.gender + "', relation='" + req.body.relation + "',email_id='" + req.body.email_id + "',address='" + req.body.address + "' WHERE reg_no='" + req.body.reg_no + "'";
+  let query = db.query(sql, (err, results) => {
+    if (err) throw err;
+    res.redirect('/add-student-localguardian');
+  });
+}); 
  
+//route for delete data
+app.post('/deleteLocalGuardian', (req, res) => {
+  let sql = "DELETE FROM LocalGuardian WHERE reg_no='" + req.body.reg_no + "'";
+  let query = db.query(sql, (err, results) => {
+    if (err) throw err;
+    res.redirect('/add-student-localguardian');
+  });
+});
+
 //route for insert data
 app.post('/save', (req, res) => {
   let data = { reg_no: req.body.reg_no, room_no: req.body.room_no, block_id: req.body.block_id, stud_name: req.body.stud_name, gender: req.body.gender, dob: req.body.dob, blood_group: req.body.blood_group, email_id: req.body.email_id, address: req.body.address, father_name: req.body.father_name, mother_name: req.body.mother_name, parent_email: req.body.parent_email, course_id: req.body.course_id };
