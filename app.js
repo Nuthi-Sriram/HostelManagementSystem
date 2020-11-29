@@ -56,7 +56,7 @@ const db = mysql.createConnection({
 app.use(cookieSession({
   name: 'session',
   keys: ['key1', 'key2'],
-  maxAge:  20 * 1000 //5 seconds
+  maxAge:  5 * 1000 //5 seconds
 }));
 
 // DECLARING CUSTOM MIDDLEWARE
