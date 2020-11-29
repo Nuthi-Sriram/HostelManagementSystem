@@ -1,6 +1,6 @@
 # HostelManagementSystem
 
-A nice project with a nice description
+A Hostel Management system with different users - Student, Warden, Chief Warden along with a website for the General public view.
 
 ---
 ## Requirements
