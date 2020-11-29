@@ -19,7 +19,7 @@ const io = require('socket.io')(http);
 
 //const {getHomePage} = require('./routes/index');
 //const {addPlayerPage, addPlayer, deletePlayer, editPlayer, editPlayerPage} = require('./routes/player');
-const port = 7000;  
+const port = 5000;  
 app.use(cors());
 app.use(express.json()); 
 app.use(function (req, res, next) {
@@ -360,8 +360,17 @@ app.get("/sign-up", (req, res) => {
 app.get("/sign-upStud", (req, res) => {
   res.render("sign-upStud");
 });
-app.get("/website-student-dashboard", (req, res) => {
-  res.render("website-student-dashboard");
+// app.get("/website-student-dashboard", (req, res) => {
+//   res.render("website-student-dashboard");
+// });
+app.get('/website-student-dashboard', ifNotLoggedin, (req,res,next) => {
+  dbConnection.execute("SELECT `name` FROM `usersStud` WHERE `id`=?",[req.session.userID])
+  .then(([rows]) => {
+      res.render('website-student-dashboard',{
+          name:rows[0].name
+      });
+  });
+  
 });
 app.get("/website-student-profile", (req, res) => {
   res.render("website-student-profile");
@@ -394,7 +403,8 @@ app.get('/website-warden-dashboard', ifNotLoggedin, (req,res,next) => {
       });
   });
   
-});// END OF ROOT PAGE
+});
+// END OF ROOT PAGE
 // app.get('/add', addPlayerPage);
 // app.get('/edit/:id', editPlayerPage);
 // app.get('/delete/:id', deletePlayer);
