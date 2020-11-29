@@ -281,6 +281,54 @@ app.post('/deleteStaff', (req, res) => {
 //   res.render("student_view");
 // });
 
+      
+app.get('/outing-request', (req, res) => {
+  let sql = "SELECT * FROM outing";
+  let query = db.query(sql, (err, results) => {
+    if (err) throw err;
+    res.render('outing_view_student.hbs', {
+      results: results
+    });
+  });
+});
+
+//route for insert student outing data
+app.post('/request', (req, res) => {
+  let data = { reg_no: req.body.reg_no, outing_type: req.body.outing_type, purpose: req.body.purpose, Out_date_time: req.body.Out_date_time, expectedin_date_time: req.body.expectedin_date_time, actualin_date_time: req.body.actualin_date_time, staff_id: req.body.staff_id};
+  let sql = "INSERT INTO outing SET ?";
+  let query = db.query(sql, data, (err, results) => {
+    if (err) throw err;
+    res.redirect('/outing-request');
+  }); 
+});
+   
+//route for update student outing actual intime
+app.post('/updateTime', (req, res) => {
+  let sql = "UPDATE Outing SET actualin_date_time='" + req.body.actualin_date_time + "'";  
+  let query = db.query(sql, (err, results) => {
+    if (err) throw err;
+    res.redirect('/outing-request');
+  }); 
+});
+
+app.get('/outing-grant', (req, res) => {
+  let sql = "SELECT * FROM outing";
+  let query = db.query(sql, (err, results) => {
+    if (err) throw err;
+    res.render('outing_view_warden.hbs', {
+      results: results
+    });
+  });
+});
+
+//route for grant gatepass 
+app.post('/grant', (req, res) => {
+  let sql = "UPDATE Outing SET current_status='" + req.body.current_status + "'";  
+  let query = db.query(sql, (err, results) => {
+    if (err) throw err;
+    res.redirect('/outing-grant');
+  }); 
+});
 
 app.get("/pricing", (req, res) => {
   res.render("pricing");

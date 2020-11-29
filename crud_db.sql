@@ -181,12 +181,13 @@ ADD PRIMARY KEY
 
 CREATE TABLE Outing
 (
-    gatepass_id varchar(15) PRIMARY KEY,
+    gatepass_id int PRIMARY KEY AUTO_INCREMENT,
     outing_type char(15) NOT NULL,
     purpose char(30) NOT NULL,
-    Out_date_time timestamp NOT NULL,
+    Out_date_time timestamp default CURRENT_TIMESTAMP NOT NULL,
     expectedin_date_time timestamp default CURRENT_TIMESTAMP NOT NULL,
     actualin_date_time timestamp default CURRENT_TIMESTAMP NOT NULL,
+    current_status char(20) default 'Requested' NOT NULL,
     reg_no varchar(20),
     staff_id varchar(20)
 );
