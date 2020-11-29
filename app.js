@@ -294,7 +294,7 @@ app.get('/outing-request', (req, res) => {
 
 //route for insert student outing data
 app.post('/request', (req, res) => {
-  let data = { reg_no: req.body.reg_no, outing_type: req.body.outing_type, purpose: req.body.purpose, Out_date_time: req.body.Out_date_time, expectedin_date_time: req.body.expectedin_date_time, actualin_date_time: req.body.actualin_date_time, staff_id: req.body.staff_id};
+  let data = { reg_no: req.body.reg_no, outing_type: req.body.outing_type, purpose: req.body.purpose, out_date_time: req.body.out_date_time, expectedin_date_time: req.body.expectedin_date_time, actualin_date_time: req.body.actualin_date_time, staff_id: req.body.staff_id};
   let sql = "INSERT INTO outing SET ?";
   let query = db.query(sql, data, (err, results) => {
     if (err) throw err;
@@ -323,7 +323,7 @@ app.get('/outing-grant', (req, res) => {
 
 //route for grant gatepass 
 app.post('/grant', (req, res) => {
-  let sql = "UPDATE Outing SET current_status='" + req.body.current_status + "'";  
+  let sql = "UPDATE outing SET current_status='" + req.body.current_status + "'";  
   let query = db.query(sql, (err, results) => {
     if (err) throw err;
     res.redirect('/outing-grant');
