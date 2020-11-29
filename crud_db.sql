@@ -179,7 +179,7 @@ ALTER TABLE `Student_Complaint`
 ADD PRIMARY KEY
 ( `complaint_id`, `reg_no`);
 
-CREATE TABLE Outing
+CREATE TABLE outing
 (
     gatepass_id int PRIMARY KEY AUTO_INCREMENT,
     outing_type char(15) NOT NULL,
@@ -192,7 +192,7 @@ CREATE TABLE Outing
     staff_id varchar(20)
 );
 
-ALTER TABLE Outing ADD constraint outing1 FOREIGN KEY(reg_no) REFERENCES Student(reg_no)
+ALTER TABLE outing ADD constraint outing1 FOREIGN KEY(reg_no) REFERENCES Student(reg_no)
 ,
 ADD constraint outing2 FOREIGN KEY
 (staff_id) REFERENCES Staff

@@ -19,7 +19,7 @@ const io = require('socket.io')(http);
 
 //const {getHomePage} = require('./routes/index');
 //const {addPlayerPage, addPlayer, deletePlayer, editPlayer, editPlayerPage} = require('./routes/player');
-const port = 5000;  
+const port = 3000;  
 app.use(cors());
 app.use(express.json()); 
 app.use(function (req, res, next) {
@@ -56,7 +56,7 @@ const db = mysql.createConnection({
 app.use(cookieSession({
   name: 'session',
   keys: ['key1', 'key2'],
-  maxAge:  5 * 1000 //5 seconds
+  maxAge:  20 * 1000 //5 seconds
 }));
 
 // DECLARING CUSTOM MIDDLEWARE
@@ -336,11 +336,23 @@ app.get("/pricing", (req, res) => {
 app.get("/survey", (req, res) => {
   res.render("survey");
 });
-app.get("/website-forum", (req, res) => {
-  res.render("website-forum");
+app.get('/website-forum', ifNotLoggedin, (req,res,next) => {
+  dbConnection.execute("SELECT `name` FROM `users` WHERE `id`=?",[req.session.userID])
+  .then(([rows]) => {
+      res.render('website-forum',{
+          name:rows[0].name
+      });
+  });
+  
 });
-app.get("/add-student-complaint", (req, res) => {
-  res.render("add-student-complaint");
+app.get('/add-student-complaint', ifNotLoggedin, (req,res,next) => {
+  dbConnection.execute("SELECT `name` FROM `usersStud` WHERE `id`=?",[req.session.userID])
+  .then(([rows]) => {
+      res.render('add-student-complaint',{
+          name:rows[0].name
+      });
+  });
+  
 });
 app.get("/website-forum-thread", (req, res) => {
   res.render("website-forum-thread");
