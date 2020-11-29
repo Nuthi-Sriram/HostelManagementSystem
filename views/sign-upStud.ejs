@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Hostel Management</title>
+  <title>Hostel Signup</title>
 
   <!-- Vendor CSS BUNDLE
     Includes styling for all of the 3rd party libraries used with this module, such as Bootstrap, Font Awesome and others.
@@ -85,48 +85,73 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 
       <div class="lock-container">
         <div class="panel panel-default text-center paper-shadow" data-z="0.5">
-          <h1 class="text-display-1 text-center margin-bottom-none">Sign In</h1>
-          <img src="images/people/110/guy-5.jpg" class="img-circle width-80">
-          <!-- <div class="panel-body">
-            <div class="form-group">
-              <div class="form-control-material">
-                <input class="form-control" id="username" type="text" placeholder="Username">
-                <label for="username">Username</label>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="form-control-material">
-                <input class="form-control" id="password" type="password" placeholder="Enter Password">
-                <label for="password">Password</label>
-              </div>
-            </div> -->
-            <form action="/signin" method="POST">
-              <div class="form-group">
-                <div class="form-group">
-                  <div class="form-control-material">
-                <label for="_email">Email</label>
-                <input type="email" name="user_email" id="_email" class="form-control" placeholder="Email" rnodeequired>
-              </div>
-              </div>
-            </div>
-              <div class="form-group">
-                <label for="_pass">Password</label>
-                <input type="password" name="user_pass" id="_pass" class="form-control" placeholder="Password" required>
-              </div>
-              <% if (locals.login_errors) { 
-                login_errors.forEach(function(error_msg){ %>
-                <div class="alert alert-danger" role="alert"><%= error_msg %></div>
-              <% });
-              } %>
-              <button type="submit" class="btn btn-primary">Login</button>
-          </form>
-      </div>
+          <h1 class="text-display-1">Create account for student</h1>
+          <div class="panel-body">
 
-            <!-- <a href="/website-student-dashboard" class="btn btn-primary">Login <i class="fa fa-fw fa-unlock-alt"></i></a> -->
-            <a href="/sign-up" class="forgot-password">Forgot password?</a>
-            <a href="/sign-up" class="link-text-color">Create account for Warden.</a><br>
-            <a href="/loginStud" class="link-text-color">Are you a student? login here</a><br>
-            <a href="/sign-upStud" class="link-text-color">Are you a student? signup here</a>
+            <!-- Signup -->
+            <!-- <form action="/register" method="POST" novalidate>
+              <div class="form-group">
+                <div class="form-control-material">
+                  <input id="firstName" type="text" class="form-control" placeholder="First Name">
+                  <label for="firstName">First name</label>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="form-control-material">
+                  <input id="lastName" type="text" class="form-control" placeholder="Last Name">
+                  <label for="lastName">Last name</label>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="form-control-material">
+                  <input id="email" type="email" class="form-control" placeholder="Email">
+                  <label for="email">Email address</label>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="form-control-material">
+                  <input id="password" type="password" class="form-control" placeholder="Password">
+                  <label for="password">Password</label>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="form-control-material">
+                  <input id="passwordConfirmation" type="password" class="form-control" placeholder="Password Confirmation">
+                  <label for="passwordConfirmation">Re-type password</label>
+                </div>
+              </div>
+              <div class="form-group text-center">
+                <div class="checkbox">
+                  <input type="checkbox" id="agree" />
+                  <label for="agree">* I Agree with <a href="sign-up.html#">Terms &amp; Conditions!</a></label>
+                </div>
+              </div>
+              <div class="text-center">
+                <a href="website-student-dashboard.html" class="btn btn-primary">Create an Account</a>
+              </div>
+            </form> -->
+            <form action="/registerStud" method="POST" novalidate>
+                <div class="form-group">
+                  <label for="_rname">Name</label>
+                  <input type="text" name="user_name" id="_rname" class="form-control" placeholder="Name" value="<%= (locals.old_data) ? old_data.user_name : ''; %>" required>
+                </div>
+                <div class="form-group">
+                  <label for="_remail">Email</label>
+                  <input type="email" name="user_email" id="_remail" class="form-control" placeholder="Email" value="<%= (locals.old_data) ? old_data.user_email : ''; %>" required>
+                </div>
+                <div class="form-group">
+                  <label for="_rpass">Password</label>
+                  <input type="password" name="user_pass" id="_rpass" class="form-control" placeholder="Password" required>
+                </div>
+                <% if (locals.register_error) { 
+                  register_error.forEach(function(error_msg){ %>
+                  <div class="alert alert-danger" role="alert"><%= error_msg %></div>
+                <% });
+                } %>
+                <button type="submit" class="btn btn-success">Sign Up</button>
+            </form>
+            <!-- //Signup -->
+
           </div>
         </div>
       </div>

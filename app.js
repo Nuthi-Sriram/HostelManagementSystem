@@ -19,7 +19,7 @@ const io = require('socket.io')(http);
 
 //const {getHomePage} = require('./routes/index');
 //const {addPlayerPage, addPlayer, deletePlayer, editPlayer, editPlayerPage} = require('./routes/player');
-const port = 7000;  
+const port = 3000;  
 app.use(cors());
 app.use(express.json()); 
 app.use(function (req, res, next) {
@@ -56,7 +56,7 @@ const db = mysql.createConnection({
 app.use(cookieSession({
   name: 'session',
   keys: ['key1', 'key2'],
-  maxAge:  5 * 1000 //5 seconds
+  maxAge:  20 * 1000 //5 seconds
 }));
 
 // DECLARING CUSTOM MIDDLEWARE
@@ -294,7 +294,7 @@ app.get('/outing-request', (req, res) => {
 
 //route for insert student outing data
 app.post('/request', (req, res) => {
-  let data = { reg_no: req.body.reg_no, outing_type: req.body.outing_type, purpose: req.body.purpose, Out_date_time: req.body.Out_date_time, expectedin_date_time: req.body.expectedin_date_time, actualin_date_time: req.body.actualin_date_time, staff_id: req.body.staff_id};
+  let data = { reg_no: req.body.reg_no, outing_type: req.body.outing_type, purpose: req.body.purpose, out_date_time: req.body.out_date_time, expectedin_date_time: req.body.expectedin_date_time, actualin_date_time: req.body.actualin_date_time, staff_id: req.body.staff_id};
   let sql = "INSERT INTO outing SET ?";
   let query = db.query(sql, data, (err, results) => {
     if (err) throw err;
@@ -323,7 +323,7 @@ app.get('/outing-grant', (req, res) => {
 
 //route for grant gatepass 
 app.post('/grant', (req, res) => {
-  let sql = "UPDATE Outing SET current_status='" + req.body.current_status + "'";  
+  let sql = "UPDATE outing SET current_status='" + req.body.current_status + "'";  
   let query = db.query(sql, (err, results) => {
     if (err) throw err;
     res.redirect('/outing-grant');
@@ -336,11 +336,23 @@ app.get("/pricing", (req, res) => {
 app.get("/survey", (req, res) => {
   res.render("survey");
 });
-app.get("/website-forum", (req, res) => {
-  res.render("website-forum");
+app.get('/website-forum', ifNotLoggedin, (req,res,next) => {
+  dbConnection.execute("SELECT `name` FROM `users` WHERE `id`=?",[req.session.userID])
+  .then(([rows]) => {
+      res.render('website-forum',{
+          name:rows[0].name
+      });
+  });
+  
 });
-app.get("/add-student-complaint", (req, res) => {
-  res.render("add-student-complaint");
+app.get('/add-student-complaint', ifNotLoggedin, (req,res,next) => {
+  dbConnection.execute("SELECT `name` FROM `usersStud` WHERE `id`=?",[req.session.userID])
+  .then(([rows]) => {
+      res.render('add-student-complaint',{
+          name:rows[0].name
+      });
+  });
+  
 });
 app.get("/website-forum-thread", (req, res) => {
   res.render("website-forum-thread");
@@ -351,11 +363,26 @@ app.get("/website-contact", (req, res) => {
 app.get("/login", (req, res) => {
   res.render("login");
 });
+app.get("/loginStud", (req, res) => {
+  res.render("loginStud");
+});
 app.get("/sign-up", (req, res) => {
   res.render("sign-up");
 });
-app.get("/website-student-dashboard", (req, res) => {
-  res.render("website-student-dashboard");
+app.get("/sign-upStud", (req, res) => {
+  res.render("sign-upStud");
+});
+// app.get("/website-student-dashboard", (req, res) => {
+//   res.render("website-student-dashboard");
+// });
+app.get('/website-student-dashboard', ifNotLoggedin, (req,res,next) => {
+  dbConnection.execute("SELECT `name` FROM `usersStud` WHERE `id`=?",[req.session.userID])
+  .then(([rows]) => {
+      res.render('website-student-dashboard',{
+          name:rows[0].name
+      });
+  });
+  
 });
 app.get("/website-student-profile", (req, res) => {
   res.render("website-student-profile");
@@ -388,7 +415,8 @@ app.get('/website-warden-dashboard', ifNotLoggedin, (req,res,next) => {
       });
   });
   
-});// END OF ROOT PAGE
+});
+// END OF ROOT PAGE
 // app.get('/add', addPlayerPage);
 // app.get('/edit/:id', editPlayerPage);
 // app.get('/delete/:id', deletePlayer);
@@ -439,6 +467,59 @@ app.post('/register', ifLoggedin,
         });
         // REDERING login-register PAGE WITH VALIDATION ERRORS
         res.render('sign-up',{
+            register_error:allErrors,
+            old_data:req.body
+        });
+    }
+});// END OF REGISTER PAGE
+
+
+//Registration page for student 
+
+app.post('/registerStud', ifLoggedin, 
+// post data validation(using express-validator)
+[
+    body('user_email','Invalid email address!').isEmail().custom((value) => {
+        return dbConnection.execute('SELECT `email` FROM `usersStud` WHERE `email`=?', [value])
+        .then(([rows]) => {
+            if(rows.length > 0){
+                return Promise.reject('This E-mail already in use!');
+            }
+            return true;
+        });
+    }),
+    body('user_name','Username is Empty!').trim().not().isEmpty(),
+    body('user_pass','The password must be of minimum length 6 characters').trim().isLength({ min: 6 }),
+],// end of post data validation
+(req,res,next) => {
+
+    const validation_result = validationResult(req);
+    const {user_name, user_pass, user_email} = req.body;
+    // IF validation_result HAS NO ERROR
+    if(validation_result.isEmpty()){
+        // password encryption (using bcryptjs)
+        bcrypt.hash(user_pass, 12).then((hash_pass) => {
+            // INSERTING USER INTO DATABASE
+            dbConnection.execute("INSERT INTO `usersStud`(`name`,`email`,`password`) VALUES(?,?,?)",[user_name,user_email, hash_pass])
+            .then(result => {
+                res.send(`your account has been created successfully, Now you can <a href="/loginStud">Login</a>`);
+            }).catch(err => {
+                // THROW INSERTING USER ERROR'S
+                if (err) throw err;
+            });
+        })
+        .catch(err => {
+            // THROW HASING ERROR'S
+            if (err) throw err;
+        })
+    }
+    else{
+        // COLLECT ALL THE VALIDATION ERRORS
+        let allErrors = validation_result.errors.map((error) => {
+            return error.msg;
+        });
+        // REDERING login-register PAGE WITH VALIDATION ERRORS
+        res.render('sign-upStud',{
             register_error:allErrors,
             old_data:req.body
         });
@@ -500,6 +581,63 @@ app.post('/signin', ifLoggedin, [
   }
 });
 // END OF LOGIN PAGE
+
+
+// LOGIN PAGE for student
+app.post('/signinStud', ifLoggedin, [
+  body('user_email').custom((value) => {
+      return dbConnection.execute('SELECT `email` FROM `usersStud` WHERE `email`=?', [value])
+      .then(([rows]) => {
+          if(rows.length == 1){
+              return true;
+              
+          }
+          return Promise.reject('Invalid Email Address!');
+          
+      });
+  }),
+  body('user_pass','Password is empty!').trim().not().isEmpty(),
+], (req, res) => {
+  const validation_result = validationResult(req);
+  const {user_pass, user_email} = req.body;
+  if(validation_result.isEmpty()){
+      
+      dbConnection.execute("SELECT * FROM `usersStud` WHERE `email`=?",[user_email])
+      .then(([rows]) => {
+          // console.log(rows[0].password);
+          bcrypt.compare(user_pass, rows[0].password).then(compare_result => {
+              if(compare_result === true){
+                  req.session.isLoggedIn = true;
+                  req.session.userID = rows[0].id;
+
+                  res.redirect('/website-student-dashboard');
+              }
+              else{
+                  res.render('sign-up',{
+                      login_errors:['Invalid Password!']
+                  }); 
+              }
+          })
+          .catch(err => {
+              if (err) throw err;
+          });
+
+
+      }).catch(err => {
+          if (err) throw err;
+      });
+  }
+  else{
+      let allErrors = validation_result.errors.map((error) => {
+          return error.msg;
+      });
+      // REDERING login-register PAGE WITH LOGIN VALIDATION ERRORS
+      res.render('sign-upStud',{
+          login_errors:allErrors
+      });
+  }
+});
+// END OF LOGIN PAGE for student
 // Forume Code
 io.on("connection", function (socket) {
 	console.log("socket connected = " + socket.id);

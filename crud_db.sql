@@ -179,12 +179,12 @@ ALTER TABLE `Student_Complaint`
 ADD PRIMARY KEY
 ( `complaint_id`, `reg_no`);
 
-CREATE TABLE Outing
+CREATE TABLE outing
 (
     gatepass_id int PRIMARY KEY AUTO_INCREMENT,
     outing_type char(15) NOT NULL,
     purpose char(30) NOT NULL,
-    Out_date_time timestamp default CURRENT_TIMESTAMP NOT NULL,
+    out_date_time timestamp default CURRENT_TIMESTAMP NOT NULL,
     expectedin_date_time timestamp default CURRENT_TIMESTAMP NOT NULL,
     actualin_date_time timestamp default CURRENT_TIMESTAMP NOT NULL,
     current_status char(20) default 'Requested' NOT NULL,
@@ -192,13 +192,29 @@ CREATE TABLE Outing
     staff_id varchar(20)
 );
 
-ALTER TABLE Outing ADD constraint outing1 FOREIGN KEY(reg_no) REFERENCES Student(reg_no)
+ALTER TABLE outing ADD constraint outing1 FOREIGN KEY(reg_no) REFERENCES Student(reg_no)
 ,
 ADD constraint outing2 FOREIGN KEY
 (staff_id) REFERENCES Staff
 (staff_id);
 
 CREATE TABLE `users`
+(
+ `id` int
+(10) unsigned NOT NULL AUTO_INCREMENT,
+ `name` varchar
+(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+ `email` varchar
+(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+ `password` varchar
+(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+ PRIMARY KEY
+(`id`),
+ UNIQUE KEY `email`
+(`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `usersStud`
 (
  `id` int
 (10) unsigned NOT NULL AUTO_INCREMENT,
