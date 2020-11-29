@@ -119,21 +119,21 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
           <h4 class="text-headline">Send a message</h4>
         </div>
         <div class="panel-body">
-          <form>
+          <form action="https://formspree.io/f/moqpnwan" method="post">
             <div class="form-group form-control-material">
-              <input class="form-control" type="text" id="fname" placeholder="First name" />
+              <input class="form-control" type="text" id="fname" name="fname"placeholder="First name" required/>
               <label for="fname">First name:</label>
             </div>
             <div class="form-group form-control-material">
-              <input class="form-control" type="tel" id="lname" placeholder="Last name" />
+              <input class="form-control" type="tel" id="lname" name="lname"placeholder="Last name" required/>
               <label for="lname">Last name:</label>
             </div>
             <div class="form-group form-control-material">
-              <input class="form-control" type="text" id="phone" placeholder="Phone" />
+              <input class="form-control" type="text" id="phone" name="phone" placeholder="Phone" required/>
               <label for="phone">Phone:</label>
             </div>
             <div class="form-group form-control-material">
-              <textarea class="form-control" id="message" placeholder="Your message"></textarea>
+              <textarea class="form-control" id="message" name="message" placeholder="Your message" required></textarea>
               <label for="message">Your message:</label>
             </div>
             <div class="text-right">

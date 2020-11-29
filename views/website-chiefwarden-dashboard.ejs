@@ -81,22 +81,22 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 <body>
 
   <!-- Fixed navbar -->
-  <%-include ('partials/navbarStudent') -%>
+  <%-include('partials/navbarPersonal')%>
 
   <div class="parallax overflow-hidden bg-blue-400 page-section third">
     <div class="container parallax-layer" data-opacity="true">
       <div class="media v-middle">
         <div class="media-left text-center">
-          <a href="website-student-dashboard.html#">
-            <img src="images/people/110/guy-6.jpg" alt="people" class="img-circle width-80" />
+          <a href="website-instructor-dashboard.html#">
+            <img src="images/people/110/guy-1.jpg" alt="people" class="img-circle width-80" />
           </a>
         </div>
         <div class="media-body">
-          <h1 class="text-white text-display-1 margin-v-0"> Abhiram </h1>
-          <p class="text-subhead"><a class="link-white text-underline" href="http://learning.frontendmatter.com/html/website-student-public-profile.html">View public profile</a></p>
+          <h1 class="text-white text-display-1 margin-v-0">Hello, sriram</h1>
+          <p class="text-subhead"><a class="link-white text-underline" href="http://learning.frontendmatter.com/html/website-instructor-public-profile.html">View public profile</a></p>
         </div>
         <div class="media-right">
-          <span class="label bg-blue-500">Student</span>
+          <span class="label bg-blue-500">Chief Warden</span>
         </div>
       </div>
     </div>
@@ -109,261 +109,248 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 
         <div class="col-md-9">
 
-          <div class="panel panel-default">
-            <div class="media v-middle">
-              <div class="media-left">
-                <div class="bg-green-400 text-white">
-                  <div class="panel-body">
-                    <i class="fa fa-credit-card fa-fw fa-2x"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="media-body">
-                Your subscription ends on <span class="text-body-2">25 February 2015</span>
-              </div>
-              <div class="media-right media-padding">
-                <a class="btn btn-white paper-shadow relative" data-z="0.5" data-hover-z="1" data-animated href="website-student-dashboard.html#">
-                Upgrade
-            </a>
-              </div>
-            </div>
-          </div>
-
           <div class="row" data-toggle="isotope">
             <div class="item col-xs-12 col-lg-6">
               <div class="panel panel-default paper-shadow" data-z="0.5">
                 <div class="panel-heading">
-                  <h4 class="text-headline margin-none">Courses</h4>
-                  <p class="text-subhead text-light">Your recent courses</p>
+                  <div class="media v-middle">
+                    <div class="media-body">
+                      <h4 class="text-headline margin-none">Earnings</h4>
+                      <p class="text-subhead text-light">This Month</p>
+                    </div>
+                    <div class="media-right">
+                      <a class="btn btn-white btn-flat" href="website-instructor-earnings.html">Reports</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel-body">
+                  <div id="line-holder" data-toggle="flot-chart-earnings" class="flotchart-holder height-200"></div>
+                </div>
+                <hr/>
+                <div class="panel-body">
+                  <div class="row text-center">
+                    <div class="col-md-6">
+                      <h4 class="margin-none">Gross Revenue</h4>
+                      <p class="text-display-1 text-warning margin-none">102.4k</p>
+                    </div>
+                    <div class="col-md-6">
+                      <h4 class="margin-none">Net Revenue</h4>
+                      <p class="text-display-1 text-success margin-none">55k</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item col-xs-12 col-lg-6">
+              <div class="panel panel-default paper-shadow" data-z="0.5">
+                <div class="panel-heading">
+                  <h4 class="text-headline margin-none">My Tasks</h4>
+                  <p class="text-subhead text-light">Your recent tasks</p>
                 </div>
                 <ul class="list-group">
                   <li class="list-group-item media v-middle">
                     <div class="media-body">
-                      <a href="website-take-course.html" class="text-subhead list-group-link">Basics of HTML</a>
+                      <a href="website-instructor-course-edit-course.html" class="text-subhead list-group-link">Taking attendance</a>
                     </div>
                     <div class="media-right">
                       <div class="progress progress-mini width-100 margin-none">
-                        <div class="progress-bar progress-bar-green-300" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width:45%;">
+                        <div class="progress-bar progress-bar-green-300" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%;">
                         </div>
                       </div>
                     </div>
                   </li>
                   <li class="list-group-item media v-middle">
                     <div class="media-body">
-                      <a href="website-take-course.html" class="text-subhead list-group-link">Angular in Steps</a>
+                      <a href="website-instructor-course-edit-course.html" class="text-subhead list-group-link">sending monthly report</a>
                     </div>
                     <div class="media-right">
                       <div class="progress progress-mini width-100 margin-none">
-                        <div class="progress-bar progress-bar-green-300" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:75%;">
+                        <div class="progress-bar progress-bar-green-300" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;">
                         </div>
                       </div>
                     </div>
                   </li>
                   <li class="list-group-item media v-middle">
                     <div class="media-body">
-                      <a href="website-take-course.html" class="text-subhead list-group-link">Bootstrap Foundations</a>
+                      <a href="website-instructor-course-edit-course.html" class="text-subhead list-group-link">Approving gatepasses</a>
                     </div>
                     <div class="media-right">
                       <div class="progress progress-mini width-100 margin-none">
-                        <div class="progress-bar progress-bar-green-300" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:25%;">
+                        <div class="progress-bar progress-bar-green-300" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;">
                         </div>
                       </div>
                     </div>
                   </li>
                 </ul>
                 <div class="panel-footer text-right">
-                  <a href="website-student-courses.html" class="btn btn-white paper-shadow relative" data-z="0" data-hover-z="1" data-animated href="website-student-dashboard.html#"> View all</a>
+                  <a href="website-instructor-courses.html" class="btn btn-white paper-shadow relative" data-z="0" data-hover-z="1" data-animated>View all</a>
+                  <a href="website-instructor-course-edit-course.html" class="btn btn-primary paper-shadow relative" data-z="0" data-hover-z="1" data-animated>CREATE Task <i class="fa fa-plus"></i></a>
                 </div>
               </div>
             </div>
             <div class="item col-xs-12 col-lg-6">
-              <div class="panel panel-default paper-shadow" data-z="0.5">
-                <div class="panel-body">
-                  <h4 class="text-headline margin-none">Rewards</h4>
-                  <p class="text-subhead text-light">Your latest achievements</p>
-                  <div class="icon-block half img-circle bg-purple-300">
-                    <i class="fa fa-star text-white"></i>
-                  </div>
-                  <div class="icon-block half img-circle bg-indigo-300">
-                    <i class="fa fa-trophy text-white"></i>
-                  </div>
-                  <div class="icon-block half img-circle bg-green-300">
-                    <i class="fa fa-mortar-board text-white"></i>
-                  </div>
-                  <div class="icon-block half img-circle bg-orange-300">
-                    <i class="fa fa-code-fork text-white"></i>
-                  </div>
-                  <div class="icon-block half img-circle bg-red-300">
-                    <i class="fa fa-diamond text-white"></i>
-                  </div>
-                </div>
+              <div class="s-container">
+                <h4 class="text-headline margin-none">Comments</h4>
+                <p class="text-subhead text-light">Latest student comments </p>
               </div>
-              <div class="panel panel-default paper-shadow" data-z="0.5">
-                <div class="panel-heading">
-                  <h4 class="text-headline">Certificates
-                    <small>(4)</small>
-                  </h4>
-                </div>
-                <div class="panel-body">
-                  <a class="btn btn-default text-grey-400 btn-lg btn-circle paper-shadow relative" data-hover-z="0.5" data-animated data-toggle="tooltip" data-title="Name of Certificate">
-                    <i class="fa fa-file-text"></i>
-                  </a>
-                  <a class="btn btn-default text-grey-400 btn-lg btn-circle paper-shadow relative" data-hover-z="0.5" data-animated data-toggle="tooltip" data-title="Name of Certificate">
-                    <i class="fa fa-file-text"></i>
-                  </a>
-                  <a class="btn btn-default text-grey-400 btn-lg btn-circle paper-shadow relative" data-hover-z="0.5" data-animated data-toggle="tooltip" data-title="Name of Certificate">
-                    <i class="fa fa-file-text"></i>
-                  </a>
-                  <a class="btn btn-default text-grey-400 btn-lg btn-circle paper-shadow relative" data-hover-z="0.5" data-animated data-toggle="tooltip" data-title="Name of Certificate">
-                    <i class="fa fa-file-text"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="item col-xs-12 col-lg-6">
-              <div class="panel panel-default paper-shadow" data-z="0.5">
-                <div class="panel-heading">
-                  <h4 class="text-headline margin-none">Quizzes</h4>
-                  <p class="text-subhead text-light">Your recent performance</p>
-                </div>
+              <div class="panel panel-default">
                 <ul class="list-group">
-                  <li class="list-group-item media v-middle">
-                    <div class="media-body">
-                      <h4 class="text-subhead margin-none">
-                        <a href="website-take-quiz.html" class="list-group-link">Title of quiz goes here?</a>
-                      </h4>
-                      <div class="caption">
-                        <span class="text-light">Course:</span>
-                        <a href="website-take-course.html">Basics of HTML</a>
+                  <li class="list-group-item">
+                    <div class="media v-middle margin-v-0-10">
+                      <div class="media-body">
+                        <p class="text-subhead">
+                          <a href="website-instructor-dashboard.html#">
+                            <img src="images/people/110/guy-4.jpg" alt="person" class="width-30 img-circle" />
+                          </a> &nbsp;
+                          <a href="website-instructor-dashboard.html#">mosaicpro</a>
+                          <span class="text-caption text-light">30 min ago</span>
+                        </p>
+                      </div>
+                      <div class="media-right">
+                        <div class="width-50 text-right">
+                          <a href="website-instructor-dashboard.html#" class="btn btn-white btn-xs"><i class="fa fa-reply"></i></a>
+                        </div>
                       </div>
                     </div>
-                    <div class="media-right text-center">
-                      <div class="text-display-1">5.8</div>
-                      <span class="caption text-light">Good</span>
-                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias, blanditiis eligendi expedita ipsam minus non numquam quidem reiciendis ut?</p>
+                    <p class="text-light"><span class="caption">Course:</span> <a href="app-student-course.html">Basics Of HTML</a></p>
                   </li>
-                  <li class="list-group-item media v-middle">
-                    <div class="media-body">
-                      <h4 class="text-subhead margin-none">
-                        <a href="website-take-quiz.html" class="list-group-link">Directives & Routing</a>
-                      </h4>
-                      <div class="caption">
-                        <span class="text-light">Course:</span>
-                        <a href="website-take-course.html">Angular in Steps</a>
+                  <li class="list-group-item">
+                    <div class="media v-middle margin-v-0-10">
+                      <div class="media-body">
+                        <p class="text-subhead">
+                          <a href="website-instructor-dashboard.html#">
+                            <img src="images/people/110/guy-2.jpg" alt="person" class="width-30 img-circle" />
+                          </a> &nbsp;
+                          <a href="website-instructor-dashboard.html#">mosaicpro</a>
+                          <span class="text-caption text-light">38 min ago</span>
+                        </p>
+                      </div>
+                      <div class="media-right">
+                        <div class="width-50 text-right">
+                          <a href="website-instructor-dashboard.html#" class="btn btn-white btn-xs"><i class="fa fa-reply"></i></a>
+                        </div>
                       </div>
                     </div>
-                    <div class="media-right text-center">
-                      <div class="text-display-1 text-green-300">9.8</div>
-                      <span class="caption text-light">Great</span>
-                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias, blanditiis eligendi expedita ipsam minus non numquam quidem reiciendis ut?</p>
+                    <p class="text-light"><span class="caption">Course:</span> <a href="app-student-course.html">Basics Of HTML</a></p>
                   </li>
-                  <li class="list-group-item media v-middle">
-                    <div class="media-body">
-                      <h4 class="text-subhead margin-none">
-                        <a href="website-take-quiz.html" class="list-group-link">Responsive & Retina</a>
-                      </h4>
-                      <div class="caption">
-                        <span class="text-light">Course:</span>
-                        <a href="website-take-course.html">Bootstrap Foundations</a>
+                  <li class="list-group-item">
+                    <div class="media v-middle margin-v-0-10">
+                      <div class="media-body">
+                        <p class="text-subhead">
+                          <a href="website-instructor-dashboard.html#">
+                            <img src="images/people/110/guy-3.jpg" alt="person" class="width-30 img-circle" />
+                          </a> &nbsp;
+                          <a href="website-instructor-dashboard.html#">mosaicpro</a>
+                          <span class="text-caption text-light">26 min ago</span>
+                        </p>
+                      </div>
+                      <div class="media-right">
+                        <div class="width-50 text-right">
+                          <a href="website-instructor-dashboard.html#" class="btn btn-white btn-xs"><i class="fa fa-reply"></i></a>
+                        </div>
                       </div>
                     </div>
-                    <div class="media-right text-center">
-                      <div class="text-display-1 text-red-300">3.4</div>
-                      <span class="caption text-light">Failed</span>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias, blanditiis eligendi expedita ipsam minus non numquam quidem reiciendis ut?</p>
+                    <p class="text-light"><span class="caption">Course:</span> <a href="app-student-course.html">Basics Of HTML</a></p>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="media v-middle margin-v-0-10">
+                      <div class="media-body">
+                        <p class="text-subhead">
+                          <a href="website-instructor-dashboard.html#">
+                            <img src="images/people/110/guy-2.jpg" alt="person" class="width-30 img-circle" />
+                          </a> &nbsp;
+                          <a href="website-instructor-dashboard.html#">mosaicpro</a>
+                          <span class="text-caption text-light">52 min ago</span>
+                        </p>
+                      </div>
+                      <div class="media-right">
+                        <div class="width-50 text-right">
+                          <a href="website-instructor-dashboard.html#" class="btn btn-white btn-xs"><i class="fa fa-reply"></i></a>
+                        </div>
+                      </div>
                     </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias, blanditiis eligendi expedita ipsam minus non numquam quidem reiciendis ut?</p>
+                    <p class="text-light"><span class="caption">Course:</span> <a href="app-student-course.html">Basics Of HTML</a></p>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="media v-middle margin-v-0-10">
+                      <div class="media-body">
+                        <p class="text-subhead">
+                          <a href="website-instructor-dashboard.html#">
+                            <img src="images/people/110/guy-5.jpg" alt="person" class="width-30 img-circle" />
+                          </a> &nbsp;
+                          <a href="website-instructor-dashboard.html#">mosaicpro</a>
+                          <span class="text-caption text-light">49 min ago</span>
+                        </p>
+                      </div>
+                      <div class="media-right">
+                        <div class="width-50 text-right">
+                          <a href="website-instructor-dashboard.html#" class="btn btn-white btn-xs"><i class="fa fa-reply"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias, blanditiis eligendi expedita ipsam minus non numquam quidem reiciendis ut?</p>
+                    <p class="text-light"><span class="caption">Course:</span> <a href="app-student-course.html">Basics Of HTML</a></p>
                   </li>
                 </ul>
-                <div class="panel-footer">
-                  <a href="http://learning.frontendmatter.com/html/website-student-quizzes.html" class="btn btn-primary paper-shadow relative" data-z="0" data-hover-z="1" data-animated href="website-student-dashboard.html#"> Go to Results</a>
-                </div>
+
               </div>
             </div>
             <div class="item col-xs-12 col-lg-6">
-              <h4 class="text-headline margin-none">Forum Activity</h4>
-              <p class="text-subhead text-light">Latest forum topics & comments</p>
-              <ul class="list-group relative paper-shadow" data-hover-z="0.5" data-animated>
-                <li class="list-group-item paper-shadow">
+              <div class="panel panel-default paper-shadow" data-z="0.5">
+                <div class="panel-heading">
                   <div class="media v-middle">
-                    <div class="media-left">
-                      <a href="website-student-dashboard.html#">
-                        <img src="images/people/110/guy-3.jpg" alt="person" class="img-circle width-40" />
-                      </a>
-                    </div>
                     <div class="media-body">
-                      <a href="website-forum-thread.html" class="text-subhead link-text-color">Can someone help me with AngularJS?</a>
-                      <div class="text-light">
-                        Topic: <a href="website-forum-category.html">AngularJS</a> &nbsp; By: <a href="website-student-dashboard.html#">Adrian Demian</a>
-                      </div>
+                      <h4 class="text-headline margin-none">Transactions</h4>
+                      <p class="text-subhead text-light">Latest from statement</p>
                     </div>
                     <div class="media-right">
-                      <div class="width-60 text-right">
-                        <span class="text-caption text-light">1 hr ago</span>
-                      </div>
+                      <a class="btn btn-white btn-flat" href="website-instructor-statement.html">Statement</a>
                     </div>
                   </div>
-                </li>
-                <li class="list-group-item paper-shadow">
-                  <div class="media v-middle">
-                    <div class="media-left">
-                      <a href="website-student-dashboard.html#">
-                        <img src="images/people/110/guy-6.jpg" alt="person" class="img-circle width-40" />
-                      </a>
-                    </div>
-                    <div class="media-body">
-                      <a href="website-forum-thread.html" class="text-subhead link-text-color">Can someone help me with AngularJS?</a>
-                      <div class="text-light">
-                        Topic: <a href="website-forum-category.html">AngularJS</a> &nbsp; By: <a href="website-student-dashboard.html#">Adrian Demian</a>
-                      </div>
-                    </div>
-                    <div class="media-right">
-                      <div class="width-60 text-right">
-                        <span class="text-caption text-light">2 hrs ago</span>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li class="list-group-item paper-shadow">
-                  <div class="media v-middle">
-                    <div class="media-left">
-                      <a href="website-student-dashboard.html#">
-                        <img src="images/people/110/guy-5.jpg" alt="person" class="img-circle width-40" />
-                      </a>
-                    </div>
-                    <div class="media-body">
-                      <a href="website-forum-thread.html" class="text-subhead link-text-color">Can someone help me with AngularJS?</a>
-                      <div class="text-light">
-                        Topic: <a href="website-forum-category.html">AngularJS</a> &nbsp; By: <a href="website-student-dashboard.html#">Adrian Demian</a>
-                      </div>
-                    </div>
-                    <div class="media-right">
-                      <div class="width-60 text-right">
-                        <span class="text-caption text-light">3 hr ago</span>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li class="list-group-item paper-shadow">
-                  <div class="media v-middle">
-                    <div class="media-left">
-                      <a href="website-student-dashboard.html#">
-                        <img src="images/people/110/guy-4.jpg" alt="person" class="img-circle width-40" />
-                      </a>
-                    </div>
-                    <div class="media-body">
-                      <a href="website-forum-thread.html" class="text-subhead link-text-color">Can someone help me with AngularJS?</a>
-                      <div class="text-light">
-                        Topic: <a href="website-forum-category.html">AngularJS</a> &nbsp; By: <a href="website-student-dashboard.html#">Adrian Demian</a>
-                      </div>
-                    </div>
-                    <div class="media-right">
-                      <div class="width-60 text-right">
-                        <span class="text-caption text-light">4 hr ago</span>
-                      </div>
-                    </div>
-                  </div>
-
-                </li>
-              </ul>
+                </div>
+                <div class="table-responsive">
+                  <table class="table text-subhead v-middle">
+                    <tbody>
+                      <tr>
+                        <td class="width-100 text-caption">
+                          <div class="label label-grey-200 label-xs">12 Jan 2015</div>
+                        </td>
+                        <td>Adrian Demian</td>
+                        <td class="width-80 text-center"><a href="website-instructor-dashboard.html#">#4975</a></td>
+                        <td class="width-50 text-center">&dollar;74</td>
+                      </tr>
+                      <tr>
+                        <td class="width-100 text-caption">
+                          <div class="label label-grey-200 label-xs">12 Jan 2015</div>
+                        </td>
+                        <td>Adrian Demian</td>
+                        <td class="width-80 text-center"><a href="website-instructor-dashboard.html#">#8981</a></td>
+                        <td class="width-50 text-center">&dollar;42</td>
+                      </tr>
+                      <tr>
+                        <td class="width-100 text-caption">
+                          <div class="label label-grey-200 label-xs">12 Jan 2015</div>
+                        </td>
+                        <td>Adrian Demian</td>
+                        <td class="width-80 text-center"><a href="website-instructor-dashboard.html#">#11090</a></td>
+                        <td class="width-50 text-center">&dollar;42</td>
+                      </tr>
+                      <tr>
+                        <td class="width-100 text-caption">
+                          <div class="label label-grey-200 label-xs">12 Jan 2015</div>
+                        </td>
+                        <td>Adrian Demian</td>
+                        <td class="width-80 text-center"><a href="website-instructor-dashboard.html#">#9805</a></td>
+                        <td class="width-50 text-center">&dollar;38</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -379,10 +366,12 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
             </div>
             <div class="panel-body list-group">
               <ul class="list-group list-group-menu">
-                <li class="list-group-item active"><a class="link-text-color" href="website-student-dashboard.html">Dashboard</a></li>
-                <li class="list-group-item"><a class="link-text-color" href="website-student-courses.html">My Courses</a></li>
-                <li class="list-group-item"><a class="link-text-color" href="website-student-profile.html">Profile</a></li>
-                <li class="list-group-item"><a class="link-text-color" href="website-student-messages.html">Messages</a></li>
+                <li class="list-group-item active"><a class="link-text-color" href="website-instructor-dashboard.html">Dashboard</a></li>
+                <li class="list-group-item"><a class="link-text-color" href="website-instructor-courses.html">My Tasks</a></li>
+                <li class="list-group-item"><a class="link-text-color" href="website-instructor-messages.html">Messages</a></li>
+                <li class="list-group-item"><a class="link-text-color" href="website-instructor-earnings.html">Earnings</a></li>
+                <li class="list-group-item"><a class="link-text-color" href="website-instructor-statement.html">Statement</a></li>
+                <li class="list-group-item"><a class="link-text-color" href="website-instructor-profile.html">Profile</a></li>
                 <li class="list-group-item"><a class="link-text-color" href="login.html"><span>Logout</span></a></li>
               </ul>
             </div>
@@ -410,7 +399,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                       </div>
                     </div>
                     <div class="media-body">
-                      <h4 class="media-heading margin-v-5-3"><a href="website-course.html">Github Webhooks for Beginners</a></h4>
+                      <h4 class="media-heading margin-v-5-3"><a href="website-course.html">Blocks mathura</a></h4>
                       <p class="small margin-none">
                         <span class="fa fa-fw fa-star text-yellow-800"></span>
                         <span class="fa fa-fw fa-star text-yellow-800"></span>

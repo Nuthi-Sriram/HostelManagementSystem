@@ -100,7 +100,9 @@ app.set("views", "./views");
 app.get("/", (req, res) => {
   res.render("index");
 });
-
+app.get("/app-student-billing", (req, res) => {
+  res.render("app-student-billing");
+});
 app.get('/add-student-warden', (req, res) => {
   let sql = "SELECT * FROM Student";
   let query = db.query(sql, (err, results) => {
@@ -110,7 +112,45 @@ app.get('/add-student-warden', (req, res) => {
     });
   });
 });
+
+app.get('/add-student-localguardian', (req, res) => {
+  let sql = "SELECT * FROM LocalGuardian";
+  let query = db.query(sql, (err, results) => {
+    if (err) throw err;
+    res.render('studentGuardian_view.hbs', {
+      results: results
+    });
+  });
+});
+
+//route for insert data
+app.post('/saveLocalGuardian', (req, res) => {
+  let data = { guardian_name: req.body.guardian_name, reg_no: req.body.reg_no,  gender: req.body.gender, relation: req.body.relation, email_id: req.body.email_id, address: req.body.address};
+  let sql = "INSERT INTO LocalGuardian SET ?";
+  let query = db.query(sql, data, (err, results) => {
+    if (err) throw err;
+    res.redirect('/add-student-localguardian');
+  }); 
+});
+   
+//route for update data
+app.post('/updateLocalGuardian', (req, res) => {
+  let sql = "UPDATE LocalGuardian SET guardian_name='" + req.body.guardian_name + "',reg_no='" + req.body.reg_no + "',gender='" + req.body.gender + "', relation='" + req.body.relation + "',email_id='" + req.body.email_id + "',address='" + req.body.address + "' WHERE reg_no='" + req.body.reg_no + "'";
+  let query = db.query(sql, (err, results) => {
+    if (err) throw err;
+    res.redirect('/add-student-localguardian');
+  });
+}); 
  
+//route for delete data
+app.post('/deleteLocalGuardian', (req, res) => {
+  let sql = "DELETE FROM LocalGuardian WHERE reg_no='" + req.body.reg_no + "'";
+  let query = db.query(sql, (err, results) => {
+    if (err) throw err;
+    res.redirect('/add-student-localguardian');
+  });
+});
+
 //route for insert data
 app.post('/save', (req, res) => {
   let data = { reg_no: req.body.reg_no, room_no: req.body.room_no, block_id: req.body.block_id, stud_name: req.body.stud_name, gender: req.body.gender, dob: req.body.dob, blood_group: req.body.blood_group, email_id: req.body.email_id, address: req.body.address, father_name: req.body.father_name, mother_name: req.body.mother_name, parent_email: req.body.parent_email, course_id: req.body.course_id };
@@ -251,6 +291,9 @@ app.get("/survey", (req, res) => {
 app.get("/website-forum", (req, res) => {
   res.render("website-forum");
 });
+app.get("/add-student-complaint", (req, res) => {
+  res.render("add-student-complaint");
+});
 app.get("/website-forum-thread", (req, res) => {
   res.render("website-forum-thread");
 });
@@ -275,6 +318,20 @@ app.get("/realTimeForum", (req, res) => {
 // app.get("/website-warden-dashboard", (req, res) => {
 //   res.render("website-warden-dashboard");
 // });
+
+// app.get('/website-chiefwarden-dashboard', ifNotLoggedin, (req,res,next) => {
+//   dbConnection.execute("SELECT `name` FROM `users` WHERE `id`=?",[req.session.userID])
+//   .then(([rows]) => {
+//       res.render('website-warden-dashboard',{
+//           name:rows[0].name
+//       });
+//   });
+  
+// });    
+app.get("/website-chiefwarden-dashboard", (req, res) => {
+  res.render("website-chiefwarden-dashboard");
+});
+ 
 app.get('/website-warden-dashboard', ifNotLoggedin, (req,res,next) => {
   dbConnection.execute("SELECT `name` FROM `users` WHERE `id`=?",[req.session.userID])
   .then(([rows]) => {
@@ -404,8 +461,8 @@ io.on("connection", function (socket) {
 		db.query("DELETE FROM messages WHERE id = '" + id + "'", function (error, result) {
 			io.emit("delete_message", id);
 		});
-	}); 
- 
+	});    
+          
 	socket.on("new_message", function (data) {
 		console.log("Client says", data)
 
@@ -425,6 +482,40 @@ io.on("connection", function (socket) {
 app.get("/get_messages", function (request, result) {
 	db.query("SELECT * FROM messages", function (error, messages) {
 		result.end(JSON.stringify(messages));
+	});
+});
+
+//Complaint Raise Code
+
+io.on("connection", function (socket) {
+	console.log("socket connected = " + socket.id);
+
+	socket.on("delete_complaint", function (id) {
+	//	console.log('time to delete');
+		db.query("DELETE FROM Complaints WHERE id = '" + id + "'", function (error, result) {
+			io.emit("delete_complaint", id);
+		});
+	});    
+          
+	socket.on("new_complaint", function (data) {
+		console.log("Client says", data)
+
+	
+		io.emit("new_complaint", data);
+
+		db.query("INSERT INTO Complaints(complaint) VALUES('" + data + "')", function (error, result) {
+			data.id = result.insertId; 
+			io.emit("new_complaint", {
+				id: result.insertId,
+				complaint: data
+			})
+		});
+	});
+});
+
+app.get("/get_complaint", function (request, result) {
+	db.query("SELECT * FROM Complaints", function (error, Complaints) {
+		result.end(JSON.stringify(Complaints));
 	});
 });
 
