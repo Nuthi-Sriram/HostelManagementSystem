@@ -1,11 +1,11 @@
 /*! =======================================================
-                      VERSION  4.0.7              
+                      VERSION  4.0.7
 ========================================================= */
 /*! =========================================================
  * bootstrap-slider.js
  *
- * Maintainers: 
- *		Kyle Kemp 
+ * Maintainers:
+ *		Kyle Kemp
  *			- Twitter: @seiyria
  *			- Github:  seiyria
  *		Rohit Kalkur
@@ -426,7 +426,7 @@ th {
 @font-face {
   font-family: 'Glyphicons Halflings';
   src: url('../fonts/glyphicons-halflings-regular.eot');
-  src: url('../fonts/glyphicons-halflings-regular.eot%3F') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg') format('svg');
+  src: url('../fonts/glyphicons-halflings-regular.eot') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg') format('svg');
 }
 .glyphicon {
   position: relative;
@@ -7625,7 +7625,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 .daterangepicker.openscenter:before {
   position: absolute;
   top: -7px;
-  left: 0;  
+  left: 0;
   right: 0;
   width: 0;
   margin-left: auto;
@@ -7641,8 +7641,8 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 .daterangepicker.openscenter:after {
   position: absolute;
   top: -6px;
-  left: 0;  
-  right: 0;  
+  left: 0;
+  right: 0;
   width: 0;
   margin-left: auto;
   margin-right: auto;
@@ -7783,7 +7783,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 }
 
 .daterangepicker_end_input {
-  float: left; 
+  float: left;
   padding-left: 11px
 }
 
@@ -7799,8 +7799,8 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url('../fonts/fontawesome-webfont.eot%3Fv=4.3.0');
-  src: url('../fonts/fontawesome-webfont.eot%3F') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff2%3Fv=4.3.0') format('woff2'), url('../fonts/fontawesome-webfont.woff%3Fv=4.3.0') format('woff'), url('../fonts/fontawesome-webfont.ttf%3Fv=4.3.0') format('truetype'), url('../fonts/fontawesome-webfont.svg%3Fv=4.3.0') format('svg');
+  src: url('../fonts/fontawesome-webfont.eot');
+  src: url('../fonts/fontawesome-webfont.eot') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff2') format('woff2'), url('../fonts/fontawesome-webfont.woff') format('woff'), url('../fonts/fontawesome-webfont.ttf') format('truetype'), url('../fonts/fontawesome-webfont.svg') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -9978,8 +9978,8 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
  */
 @font-face {
   font-family: 'Material Design Iconic Font';
-  src: url('../fonts/Material-Design-Iconic-Font.eot%3Fv=1.0.1');
-  src: url('../fonts/Material-Design-Iconic-Font.eot%3F') format('embedded-opentype'), url('../fonts/Material-Design-Iconic-Font.woff%3Fv=1.0.1') format('woff'), url('../fonts/Material-Design-Iconic-Font.ttf%3Fv=1.0.1') format('truetype'), url('../fonts/Material-Design-Iconic-Font.svg%3Fv=1.0.1') format('svg');
+  src: url('../fonts/Material-Design-Iconic-Font.eot');
+  src: url('../fonts/Material-Design-Iconic-Font.eot') format('embedded-opentype'), url('../fonts/Material-Design-Iconic-Font.woff') format('woff'), url('../fonts/Material-Design-Iconic-Font.ttf') format('truetype'), url('../fonts/Material-Design-Iconic-Font.svg') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -12355,7 +12355,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
   content: "\f2e7";
 }
 
-/* 
+/*
  *  Owl Carousel - Animate Plugin
  */
 .owl-carousel .animated {
@@ -12394,7 +12394,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
   }
 }
 
-/* 
+/*
  * 	Owl Carousel - Auto Height Plugin
  */
 .owl-height {
@@ -12405,7 +12405,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
   transition: height 500ms ease-in-out;
 }
 
-/* 
+/*
  *  Core Owl Carousel CSS File
  */
 .owl-carousel {
@@ -12500,7 +12500,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
   display: block;
 }
 
-/* 
+/*
  * 	Owl Carousel - Lazy Load Plugin
  */
 .owl-carousel .owl-item .owl-lazy {
@@ -12515,7 +12515,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
   transform-style: preserve-3d;
 }
 
-/* 
+/*
  * 	Owl Carousel - Video Plugin
  */
 .owl-carousel .owl-video-wrapper {
@@ -12577,7 +12577,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 @font-face {
   font-family: "picto-foundry-arrows";
   src: url("../fonts/picto-foundry-arrows.eot");
-  src: url("../fonts/picto-foundry-arrows.eot%3F") format("embedded-opentype"),
+  src: url("../fonts/picto-foundry-arrows.eot") format("embedded-opentype"),
        url("../fonts/picto-foundry-arrows.woff") format("woff"),
        url("../fonts/picto-foundry-arrows.ttf") format("truetype"),
        url("../fonts/picto-foundry-arrows.svg") format("svg");
@@ -12734,7 +12734,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 @font-face {
   font-family: "picto-foundry-clothing";
   src: url("../fonts/picto-foundry-clothing.eot");
-  src: url("../fonts/picto-foundry-clothing.eot%3F") format("embedded-opentype"),
+  src: url("../fonts/picto-foundry-clothing.eot") format("embedded-opentype"),
        url("../fonts/picto-foundry-clothing.woff") format("woff"),
        url("../fonts/picto-foundry-clothing.ttf") format("truetype"),
        url("../fonts/picto-foundry-clothing.svg") format("svg");
@@ -12874,7 +12874,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 @font-face {
   font-family: "picto-foundry-emotions";
   src: url("../fonts/picto-foundry-emotions.eot");
-  src: url("../fonts/picto-foundry-emotions.eot%3F") format("embedded-opentype"),
+  src: url("../fonts/picto-foundry-emotions.eot") format("embedded-opentype"),
        url("../fonts/picto-foundry-emotions.woff") format("woff"),
        url("../fonts/picto-foundry-emotions.ttf") format("truetype"),
        url("../fonts/picto-foundry-emotions.svg") format("svg");
@@ -13015,7 +13015,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 @font-face {
   font-family: "picto-foundry-food";
   src: url("../fonts/picto-foundry-food.eot");
-  src: url("../fonts/picto-foundry-food.eot%3F") format("embedded-opentype"),
+  src: url("../fonts/picto-foundry-food.eot") format("embedded-opentype"),
        url("../fonts/picto-foundry-food.woff") format("woff"),
        url("../fonts/picto-foundry-food.ttf") format("truetype"),
        url("../fonts/picto-foundry-food.svg") format("svg");
@@ -13153,7 +13153,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 @font-face {
   font-family: "picto-foundry-general";
   src: url("../fonts/picto-foundry-general.eot");
-  src: url("../fonts/picto-foundry-general.eot%3F") format("embedded-opentype"),
+  src: url("../fonts/picto-foundry-general.eot") format("embedded-opentype"),
        url("../fonts/picto-foundry-general.woff") format("woff"),
        url("../fonts/picto-foundry-general.ttf") format("truetype"),
        url("../fonts/picto-foundry-general.svg") format("svg");
@@ -13533,7 +13533,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 @font-face {
   font-family: "picto-foundry-household";
   src: url("../fonts/picto-foundry-household.eot");
-  src: url("../fonts/picto-foundry-household.eot%3F") format("embedded-opentype"),
+  src: url("../fonts/picto-foundry-household.eot") format("embedded-opentype"),
        url("../fonts/picto-foundry-household.woff") format("woff"),
        url("../fonts/picto-foundry-household.ttf") format("truetype"),
        url("../fonts/picto-foundry-household.svg") format("svg");
@@ -13675,7 +13675,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 @font-face {
   font-family: "picto-foundry-medical-science";
   src: url("../fonts/picto-foundry-medical-science.eot");
-  src: url("../fonts/picto-foundry-medical-science.eot%3F") format("embedded-opentype"),
+  src: url("../fonts/picto-foundry-medical-science.eot") format("embedded-opentype"),
        url("../fonts/picto-foundry-medical-science.woff") format("woff"),
        url("../fonts/picto-foundry-medical-science.ttf") format("truetype"),
        url("../fonts/picto-foundry-medical-science.svg") format("svg");
@@ -13819,7 +13819,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 @font-face {
   font-family: "picto-foundry-multimedia";
   src: url("../fonts/picto-foundry-multimedia.eot");
-  src: url("../fonts/picto-foundry-multimedia.eot%3F") format("embedded-opentype"),
+  src: url("../fonts/picto-foundry-multimedia.eot") format("embedded-opentype"),
        url("../fonts/picto-foundry-multimedia.woff") format("woff"),
        url("../fonts/picto-foundry-multimedia.ttf") format("truetype"),
        url("../fonts/picto-foundry-multimedia.svg") format("svg");
@@ -14019,7 +14019,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 @font-face {
   font-family: "picto-foundry-nature";
   src: url("../fonts/picto-foundry-nature.eot");
-  src: url("../fonts/picto-foundry-nature.eot%3F") format("embedded-opentype"),
+  src: url("../fonts/picto-foundry-nature.eot") format("embedded-opentype"),
        url("../fonts/picto-foundry-nature.woff") format("woff"),
        url("../fonts/picto-foundry-nature.ttf") format("truetype"),
        url("../fonts/picto-foundry-nature.svg") format("svg");
@@ -14163,7 +14163,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 @font-face {
   font-family: "picto-foundry-shopping-finance";
   src: url("../fonts/picto-foundry-shopping-finance.eot");
-  src: url("../fonts/picto-foundry-shopping-finance.eot%3F") format("embedded-opentype"),
+  src: url("../fonts/picto-foundry-shopping-finance.eot") format("embedded-opentype"),
        url("../fonts/picto-foundry-shopping-finance.woff") format("woff"),
        url("../fonts/picto-foundry-shopping-finance.ttf") format("truetype"),
        url("../fonts/picto-foundry-shopping-finance.svg") format("svg");
@@ -14307,7 +14307,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 @font-face {
   font-family: "picto-foundry-sports";
   src: url("../fonts/picto-foundry-sports.eot");
-  src: url("../fonts/picto-foundry-sports.eot%3F") format("embedded-opentype"),
+  src: url("../fonts/picto-foundry-sports.eot") format("embedded-opentype"),
        url("../fonts/picto-foundry-sports.woff") format("woff"),
        url("../fonts/picto-foundry-sports.ttf") format("truetype"),
        url("../fonts/picto-foundry-sports.svg") format("svg");
@@ -14454,7 +14454,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 @font-face {
   font-family: "picto-foundry-vehicle-navigation";
   src: url("../fonts/picto-foundry-vehicle-navigation.eot");
-  src: url("../fonts/picto-foundry-vehicle-navigation.eot%3F") format("embedded-opentype"),
+  src: url("../fonts/picto-foundry-vehicle-navigation.eot") format("embedded-opentype"),
        url("../fonts/picto-foundry-vehicle-navigation.woff") format("woff"),
        url("../fonts/picto-foundry-vehicle-navigation.ttf") format("truetype"),
        url("../fonts/picto-foundry-vehicle-navigation.svg") format("svg");
@@ -14602,7 +14602,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 @font-face {
   font-family: "picto-foundry-weather";
   src: url("../fonts/picto-foundry-weather.eot");
-  src: url("../fonts/picto-foundry-weather.eot%3F") format("embedded-opentype"),
+  src: url("../fonts/picto-foundry-weather.eot") format("embedded-opentype"),
        url("../fonts/picto-foundry-weather.woff") format("woff"),
        url("../fonts/picto-foundry-weather.ttf") format("truetype"),
        url("../fonts/picto-foundry-weather.svg") format("svg");
@@ -15671,7 +15671,7 @@ html[dir="rtl"] .select2-container-multi .select2-search-choice-close {
 .slick-vertical .slick-slide { display: block; height: auto; border: 1px solid transparent; }
 
 /* Icons */
-@font-face { font-family: "slick"; src: url("fonts/slick.eot"); src: url("fonts/slick.eot%3F") format("embedded-opentype"), url("fonts/slick.woff") format("woff"), url("fonts/slick.ttf") format("truetype"), url("fonts/slick.svg") format("svg"); font-weight: normal; font-style: normal; }
+@font-face { font-family: "slick"; src: url("fonts/slick.eot"); src: url("fonts/slick.eot") format("embedded-opentype"), url("fonts/slick.woff") format("woff"), url("fonts/slick.ttf") format("truetype"), url("fonts/slick.svg") format("svg"); font-weight: normal; font-style: normal; }
 /* Arrows */
 .slick-prev, .slick-next { position: absolute; display: block; height: 20px; width: 20px; line-height: 0; font-size: 0; cursor: pointer; background: transparent; color: transparent; top: 50%; margin-top: -10px; padding: 0; border: none; outline: none; }
 .slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus { outline: none; background: transparent; color: transparent; }
@@ -15704,13 +15704,13 @@ html[dir="rtl"] .select2-container-multi .select2-search-choice-close {
 /*# sourceMappingURL=slick.css.map */
 
 /*! =======================================================
-                      VERSION  4.0.7              
+                      VERSION  4.0.7
 ========================================================= */
 /*! =========================================================
  * bootstrap-slider.js
  *
- * Maintainers: 
- *		Kyle Kemp 
+ * Maintainers:
+ *		Kyle Kemp
  *			- Twitter: @seiyria
  *			- Github:  seiyria
  *		Rohit Kalkur
@@ -16131,7 +16131,7 @@ th {
 @font-face {
   font-family: 'Glyphicons Halflings';
   src: url('../fonts/glyphicons-halflings-regular.eot');
-  src: url('../fonts/glyphicons-halflings-regular.eot%3F') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg') format('svg');
+  src: url('../fonts/glyphicons-halflings-regular.eot') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg') format('svg');
 }
 .glyphicon {
   position: relative;
@@ -23330,7 +23330,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 .daterangepicker.openscenter:before {
   position: absolute;
   top: -7px;
-  left: 0;  
+  left: 0;
   right: 0;
   width: 0;
   margin-left: auto;
@@ -23346,8 +23346,8 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 .daterangepicker.openscenter:after {
   position: absolute;
   top: -6px;
-  left: 0;  
-  right: 0;  
+  left: 0;
+  right: 0;
   width: 0;
   margin-left: auto;
   margin-right: auto;
@@ -23488,7 +23488,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 }
 
 .daterangepicker_end_input {
-  float: left; 
+  float: left;
   padding-left: 11px
 }
 
@@ -23504,8 +23504,8 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url('../fonts/fontawesome-webfont.eot%3Fv=4.3.0');
-  src: url('../fonts/fontawesome-webfont.eot%3F') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff2%3Fv=4.3.0') format('woff2'), url('../fonts/fontawesome-webfont.woff%3Fv=4.3.0') format('woff'), url('../fonts/fontawesome-webfont.ttf%3Fv=4.3.0') format('truetype'), url('../fonts/fontawesome-webfont.svg%3Fv=4.3.0') format('svg');
+  src: url('../fonts/fontawesome-webfont.eot');
+  src: url('../fonts/fontawesome-webfont.eot') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff2') format('woff2'), url('../fonts/fontawesome-webfont.woff') format('woff'), url('../fonts/fontawesome-webfont.ttf') format('truetype'), url('../fonts/fontawesome-webfont.svg') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -25683,8 +25683,8 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
  */
 @font-face {
   font-family: 'Material Design Iconic Font';
-  src: url('../fonts/Material-Design-Iconic-Font.eot%3Fv=1.0.1');
-  src: url('../fonts/Material-Design-Iconic-Font.eot%3F') format('embedded-opentype'), url('../fonts/Material-Design-Iconic-Font.woff%3Fv=1.0.1') format('woff'), url('../fonts/Material-Design-Iconic-Font.ttf%3Fv=1.0.1') format('truetype'), url('../fonts/Material-Design-Iconic-Font.svg%3Fv=1.0.1') format('svg');
+  src: url('../fonts/Material-Design-Iconic-Font.eot');
+  src: url('../fonts/Material-Design-Iconic-Font.eot') format('embedded-opentype'), url('../fonts/Material-Design-Iconic-Font.woff') format('woff'), url('../fonts/Material-Design-Iconic-Font.ttf') format('truetype'), url('../fonts/Material-Design-Iconic-Font.svg') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -28060,7 +28060,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
   content: "\f2e7";
 }
 
-/* 
+/*
  *  Owl Carousel - Animate Plugin
  */
 .owl-carousel .animated {
@@ -28099,7 +28099,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
   }
 }
 
-/* 
+/*
  * 	Owl Carousel - Auto Height Plugin
  */
 .owl-height {
@@ -28110,7 +28110,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
   transition: height 500ms ease-in-out;
 }
 
-/* 
+/*
  *  Core Owl Carousel CSS File
  */
 .owl-carousel {
@@ -28205,7 +28205,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
   display: block;
 }
 
-/* 
+/*
  * 	Owl Carousel - Lazy Load Plugin
  */
 .owl-carousel .owl-item .owl-lazy {
@@ -28220,7 +28220,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
   transform-style: preserve-3d;
 }
 
-/* 
+/*
  * 	Owl Carousel - Video Plugin
  */
 .owl-carousel .owl-video-wrapper {
@@ -28282,7 +28282,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 @font-face {
   font-family: "picto-foundry-arrows";
   src: url("../fonts/picto-foundry-arrows.eot");
-  src: url("../fonts/picto-foundry-arrows.eot%3F") format("embedded-opentype"),
+  src: url("../fonts/picto-foundry-arrows.eot") format("embedded-opentype"),
        url("../fonts/picto-foundry-arrows.woff") format("woff"),
        url("../fonts/picto-foundry-arrows.ttf") format("truetype"),
        url("../fonts/picto-foundry-arrows.svg") format("svg");
@@ -28439,7 +28439,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 @font-face {
   font-family: "picto-foundry-clothing";
   src: url("../fonts/picto-foundry-clothing.eot");
-  src: url("../fonts/picto-foundry-clothing.eot%3F") format("embedded-opentype"),
+  src: url("../fonts/picto-foundry-clothing.eot") format("embedded-opentype"),
        url("../fonts/picto-foundry-clothing.woff") format("woff"),
        url("../fonts/picto-foundry-clothing.ttf") format("truetype"),
        url("../fonts/picto-foundry-clothing.svg") format("svg");
@@ -28579,7 +28579,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 @font-face {
   font-family: "picto-foundry-emotions";
   src: url("../fonts/picto-foundry-emotions.eot");
-  src: url("../fonts/picto-foundry-emotions.eot%3F") format("embedded-opentype"),
+  src: url("../fonts/picto-foundry-emotions.eot") format("embedded-opentype"),
        url("../fonts/picto-foundry-emotions.woff") format("woff"),
        url("../fonts/picto-foundry-emotions.ttf") format("truetype"),
        url("../fonts/picto-foundry-emotions.svg") format("svg");
@@ -28720,7 +28720,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 @font-face {
   font-family: "picto-foundry-food";
   src: url("../fonts/picto-foundry-food.eot");
-  src: url("../fonts/picto-foundry-food.eot%3F") format("embedded-opentype"),
+  src: url("../fonts/picto-foundry-food.eot") format("embedded-opentype"),
        url("../fonts/picto-foundry-food.woff") format("woff"),
        url("../fonts/picto-foundry-food.ttf") format("truetype"),
        url("../fonts/picto-foundry-food.svg") format("svg");
@@ -28858,7 +28858,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 @font-face {
   font-family: "picto-foundry-general";
   src: url("../fonts/picto-foundry-general.eot");
-  src: url("../fonts/picto-foundry-general.eot%3F") format("embedded-opentype"),
+  src: url("../fonts/picto-foundry-general.eot") format("embedded-opentype"),
        url("../fonts/picto-foundry-general.woff") format("woff"),
        url("../fonts/picto-foundry-general.ttf") format("truetype"),
        url("../fonts/picto-foundry-general.svg") format("svg");
@@ -29238,7 +29238,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 @font-face {
   font-family: "picto-foundry-household";
   src: url("../fonts/picto-foundry-household.eot");
-  src: url("../fonts/picto-foundry-household.eot%3F") format("embedded-opentype"),
+  src: url("../fonts/picto-foundry-household.eot") format("embedded-opentype"),
        url("../fonts/picto-foundry-household.woff") format("woff"),
        url("../fonts/picto-foundry-household.ttf") format("truetype"),
        url("../fonts/picto-foundry-household.svg") format("svg");
@@ -29380,7 +29380,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 @font-face {
   font-family: "picto-foundry-medical-science";
   src: url("../fonts/picto-foundry-medical-science.eot");
-  src: url("../fonts/picto-foundry-medical-science.eot%3F") format("embedded-opentype"),
+  src: url("../fonts/picto-foundry-medical-science.eot") format("embedded-opentype"),
        url("../fonts/picto-foundry-medical-science.woff") format("woff"),
        url("../fonts/picto-foundry-medical-science.ttf") format("truetype"),
        url("../fonts/picto-foundry-medical-science.svg") format("svg");
@@ -29524,7 +29524,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 @font-face {
   font-family: "picto-foundry-multimedia";
   src: url("../fonts/picto-foundry-multimedia.eot");
-  src: url("../fonts/picto-foundry-multimedia.eot%3F") format("embedded-opentype"),
+  src: url("../fonts/picto-foundry-multimedia.eot") format("embedded-opentype"),
        url("../fonts/picto-foundry-multimedia.woff") format("woff"),
        url("../fonts/picto-foundry-multimedia.ttf") format("truetype"),
        url("../fonts/picto-foundry-multimedia.svg") format("svg");
@@ -29724,7 +29724,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 @font-face {
   font-family: "picto-foundry-nature";
   src: url("../fonts/picto-foundry-nature.eot");
-  src: url("../fonts/picto-foundry-nature.eot%3F") format("embedded-opentype"),
+  src: url("../fonts/picto-foundry-nature.eot") format("embedded-opentype"),
        url("../fonts/picto-foundry-nature.woff") format("woff"),
        url("../fonts/picto-foundry-nature.ttf") format("truetype"),
        url("../fonts/picto-foundry-nature.svg") format("svg");
@@ -29868,7 +29868,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 @font-face {
   font-family: "picto-foundry-shopping-finance";
   src: url("../fonts/picto-foundry-shopping-finance.eot");
-  src: url("../fonts/picto-foundry-shopping-finance.eot%3F") format("embedded-opentype"),
+  src: url("../fonts/picto-foundry-shopping-finance.eot") format("embedded-opentype"),
        url("../fonts/picto-foundry-shopping-finance.woff") format("woff"),
        url("../fonts/picto-foundry-shopping-finance.ttf") format("truetype"),
        url("../fonts/picto-foundry-shopping-finance.svg") format("svg");
@@ -30012,7 +30012,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 @font-face {
   font-family: "picto-foundry-sports";
   src: url("../fonts/picto-foundry-sports.eot");
-  src: url("../fonts/picto-foundry-sports.eot%3F") format("embedded-opentype"),
+  src: url("../fonts/picto-foundry-sports.eot") format("embedded-opentype"),
        url("../fonts/picto-foundry-sports.woff") format("woff"),
        url("../fonts/picto-foundry-sports.ttf") format("truetype"),
        url("../fonts/picto-foundry-sports.svg") format("svg");
@@ -30159,7 +30159,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 @font-face {
   font-family: "picto-foundry-vehicle-navigation";
   src: url("../fonts/picto-foundry-vehicle-navigation.eot");
-  src: url("../fonts/picto-foundry-vehicle-navigation.eot%3F") format("embedded-opentype"),
+  src: url("../fonts/picto-foundry-vehicle-navigation.eot") format("embedded-opentype"),
        url("../fonts/picto-foundry-vehicle-navigation.woff") format("woff"),
        url("../fonts/picto-foundry-vehicle-navigation.ttf") format("truetype"),
        url("../fonts/picto-foundry-vehicle-navigation.svg") format("svg");
@@ -30307,7 +30307,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 @font-face {
   font-family: "picto-foundry-weather";
   src: url("../fonts/picto-foundry-weather.eot");
-  src: url("../fonts/picto-foundry-weather.eot%3F") format("embedded-opentype"),
+  src: url("../fonts/picto-foundry-weather.eot") format("embedded-opentype"),
        url("../fonts/picto-foundry-weather.woff") format("woff"),
        url("../fonts/picto-foundry-weather.ttf") format("truetype"),
        url("../fonts/picto-foundry-weather.svg") format("svg");
@@ -31376,7 +31376,7 @@ html[dir="rtl"] .select2-container-multi .select2-search-choice-close {
 .slick-vertical .slick-slide { display: block; height: auto; border: 1px solid transparent; }
 
 /* Icons */
-@font-face { font-family: "slick"; src: url("fonts/slick.eot"); src: url("fonts/slick.eot%3F") format("embedded-opentype"), url("fonts/slick.woff") format("woff"), url("fonts/slick.ttf") format("truetype"), url("fonts/slick.svg") format("svg"); font-weight: normal; font-style: normal; }
+@font-face { font-family: "slick"; src: url("fonts/slick.eot"); src: url("fonts/slick.eot") format("embedded-opentype"), url("fonts/slick.woff") format("woff"), url("fonts/slick.ttf") format("truetype"), url("fonts/slick.svg") format("svg"); font-weight: normal; font-style: normal; }
 /* Arrows */
 .slick-prev, .slick-next { position: absolute; display: block; height: 20px; width: 20px; line-height: 0; font-size: 0; cursor: pointer; background: transparent; color: transparent; top: 50%; margin-top: -10px; padding: 0; border: none; outline: none; }
 .slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus { outline: none; background: transparent; color: transparent; }
