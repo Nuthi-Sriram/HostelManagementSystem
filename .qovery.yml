@@ -1,0 +1,15 @@
+---
+application:
+  name: "amrita-hostelmanagementsystem"
+  project: "hostel-management-system"
+  organization: "QoveryCommunity"
+databases:
+- type: "MYSQL"
+  name: "socka"
+  version: "8.0"
+routers:
+- name: "main-amrita-hostelmanagementsystem"
+  routes:
+  - application_name: "amrita-hostelmanagementsystem"
+    paths:
+    - "/*"
