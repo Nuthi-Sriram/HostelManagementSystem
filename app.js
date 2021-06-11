@@ -47,9 +47,9 @@ io.sockets.on('connection', function(socket) {
 // the mysql.createConnection function takes in a configuration object which contains host, user, password and the database name.
 
 const db = mysql.createConnection({
-  host: 'localhost',
+  host: 'http://socka-msrntvknrmbfbodn-svc.qovery.io/',
   user: 'root',
-  password: 'Password123@',
+  password: '16RKjqaMcXbf8S9c',
   database: 'socka' 
 });
 // APPLY COOKIE SESSION MIDDLEWARE
