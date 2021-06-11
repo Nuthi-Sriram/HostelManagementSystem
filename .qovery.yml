@@ -2,6 +2,8 @@
 application:
   name: "amrita-hostelmanagementsystem"
   project: "hostel-management-system"
+  publicly_accessible: true
+  port: 3000
   organization: "QoveryCommunity"
 databases:
 - type: "MYSQL"

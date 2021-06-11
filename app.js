@@ -50,7 +50,7 @@ const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: 'Password123@',
-  database: 'socka'
+  database: 'socka' 
 });
 // APPLY COOKIE SESSION MIDDLEWARE
 app.use(cookieSession({
